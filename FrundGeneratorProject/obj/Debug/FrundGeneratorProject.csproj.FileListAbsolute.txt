@@ -1,0 +1,7 @@
+C:\Users\tarasradio\Desktop\HexapodCoreProject\FrundGeneratorProject\bin\Debug\FrundGeneratorProject.dll
+C:\Users\tarasradio\Desktop\HexapodCoreProject\FrundGeneratorProject\bin\Debug\FrundGeneratorProject.pdb
+C:\Users\tarasradio\Desktop\HexapodCoreProject\FrundGeneratorProject\bin\Debug\HexapodIntefacesProject.dll
+C:\Users\tarasradio\Desktop\HexapodCoreProject\FrundGeneratorProject\bin\Debug\HexapodIntefacesProject.pdb
+C:\Users\tarasradio\Desktop\HexapodCoreProject\FrundGeneratorProject\obj\Debug\FrundGeneratorProject.csprojResolveAssemblyReference.cache
+C:\Users\tarasradio\Desktop\HexapodCoreProject\FrundGeneratorProject\obj\Debug\FrundGeneratorProject.dll
+C:\Users\tarasradio\Desktop\HexapodCoreProject\FrundGeneratorProject\obj\Debug\FrundGeneratorProject.pdb

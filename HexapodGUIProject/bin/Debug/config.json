@@ -1,0 +1,202 @@
+{
+  "Servous": {
+    "1": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"2": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"3": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"4": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"5": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"6": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"7": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"8": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"9": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"10": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"11": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"12": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"13": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"14": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"15": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"16": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"17": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    },
+	"18": {
+      "Name": "Servo1",
+      "Number": 1,
+      "Channel": 0,
+      "Angle": 0,
+      "Offset": 0,
+      "isReverce": false,
+      "minAngle": 0,
+      "maxAngle": 0,
+      "isEnable": true
+    }
+  }
+}

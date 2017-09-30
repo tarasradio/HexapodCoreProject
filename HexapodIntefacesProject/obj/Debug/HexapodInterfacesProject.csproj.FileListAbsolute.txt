@@ -1,0 +1,4 @@
+C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodIntefacesProject\bin\Debug\HexapodIntefacesProject.dll
+C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodIntefacesProject\bin\Debug\HexapodIntefacesProject.pdb
+C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodIntefacesProject\obj\Debug\HexapodIntefacesProject.dll
+C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodIntefacesProject\obj\Debug\HexapodIntefacesProject.pdb

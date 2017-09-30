@@ -1,0 +1,7 @@
+C:\Users\tarasradio\Desktop\HexapodCoreProject\GateGeneratorProject\bin\Debug\GateGeneratorProject.dll
+C:\Users\tarasradio\Desktop\HexapodCoreProject\GateGeneratorProject\bin\Debug\GateGeneratorProject.pdb
+C:\Users\tarasradio\Desktop\HexapodCoreProject\GateGeneratorProject\bin\Debug\HexapodIntefacesProject.dll
+C:\Users\tarasradio\Desktop\HexapodCoreProject\GateGeneratorProject\bin\Debug\HexapodIntefacesProject.pdb
+C:\Users\tarasradio\Desktop\HexapodCoreProject\GateGeneratorProject\obj\Debug\GateGeneratorProject.dll
+C:\Users\tarasradio\Desktop\HexapodCoreProject\GateGeneratorProject\obj\Debug\GateGeneratorProject.pdb
+C:\Users\tarasradio\Desktop\HexapodCoreProject\GateGeneratorProject\obj\Debug\GateGeneratorProject.csprojResolveAssemblyReference.cache
