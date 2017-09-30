@@ -1,9 +1,0 @@
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\bin\Debug\HexapodCoreProject.dll
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\bin\Debug\HexapodCoreProject.pdb
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\bin\Debug\HexapodIntefacesProject.dll
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\bin\Debug\HexapodIntefacesProject.pdb
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\obj\Debug\HexapodCoreProject.csprojResolveAssemblyReference.cache
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\obj\Debug\HexapodCoreProject.dll
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\obj\Debug\HexapodCoreProject.pdb
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\bin\Debug\Newtonsoft.Json.dll
-C:\Users\tarasradio\Desktop\HexapodCoreProject\HexapodCoreProject\bin\Debug\Newtonsoft.Json.xml
