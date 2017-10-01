@@ -12,7 +12,7 @@ namespace HexapodCoreProject.Management
 {
     public class Storage
     {
-        StorageSettings settings;
+        public StorageSettings settings { get; set; }
 
         public Storage()
         {

@@ -54,6 +54,33 @@
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\ServousModel.cs" />
+    <Compile Include="ViewPresenters\SelectedServousPresenter.cs" />
+    <Compile Include="ViewPresenters\ServousListPresenter.cs" />
+    <Compile Include="Views\EditLimitsDialogView.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\EditLimitsDialogView.Designer.cs">
+      <DependentUpon>EditLimitsDialogView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LogView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\LogView.Designer.cs">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SelectedServoView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\SelectedServoView.Designer.cs">
+      <DependentUpon>SelectedServoView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ServousListView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\ServousListView.Designer.cs">
+      <DependentUpon>ServousListView.cs</DependentUpon>
+    </Compile>
     <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
     </EmbeddedResource>
@@ -66,6 +93,18 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\EditLimitsDialogView.resx">
+      <DependentUpon>EditLimitsDialogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\LogView.resx">
+      <DependentUpon>LogView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\SelectedServoView.resx">
+      <DependentUpon>SelectedServoView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\ServousListView.resx">
+      <DependentUpon>ServousListView.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
@@ -97,6 +136,7 @@
       <Name>HexapodInterfacesProject</Name>
     </ProjectReference>
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

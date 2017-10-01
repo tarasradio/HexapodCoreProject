@@ -4,10 +4,10 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace HexapodCoreProject.Interfaces
+namespace HexapodInterfacesProject
 {
-    public interface IPacketMaster
+    public interface IPresenter
     {
-        void servoSetAngle(int Number, int Angle);
+        void setView(IView view);
     }
 }

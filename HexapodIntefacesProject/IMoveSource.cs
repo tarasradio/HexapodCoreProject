@@ -8,6 +8,6 @@ namespace HexapodInterfacesProject
 {
     public interface IMoveSource
     {
-
+        
     }
 }
