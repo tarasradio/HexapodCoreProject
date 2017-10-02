@@ -8,7 +8,7 @@ namespace HexapodCoreProject.Interfaces
 {
     public interface IRobot
     {
-        void setAngle(int servoNumber, int angle);
+        void setAngle(int servoNumber, int angle, bool useOffset);
         void setTibiaAngle(int legID, int angle);
         void setFemurAngle(int legID, int angle);
         void setCoxaAngle(int legID, int angle);

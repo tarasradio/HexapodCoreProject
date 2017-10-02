@@ -107,7 +107,7 @@ namespace HexapodCoreProject.Masters
             }
             catch (Exception ex)
             {
-                _logMaster.addMessage("Ошибка при попытке записи в порт");
+                //_logMaster.addMessage("Ошибка при попытке записи в порт");
             }
         }
 

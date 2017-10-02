@@ -40,10 +40,10 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
-            this.servousListView = new HexapodGUIProject.Views.ServousListView();
             this.gateGeneratorView = new GateGeneratorProject.Views.GateGeneratorView();
             this.frundGeneratorView = new FrundGeneratorProject.Views.FrundGeneratorView();
+            this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
+            this.servousListView = new HexapodGUIProject.Views.ServousListView();
             this.logView = new HexapodGUIProject.Views.LogView();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
@@ -76,7 +76,7 @@
             this.updateListPortsButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.updateListPortsButton.Name = "updateListPortsButton";
             this.updateListPortsButton.Size = new System.Drawing.Size(36, 36);
-            this.updateListPortsButton.Text = "toolStripButton1";
+            this.updateListPortsButton.Text = "Обновить список портов";
             this.updateListPortsButton.Click += new System.EventHandler(this.updateListPortsButton_Click);
             // 
             // listPortsBox
@@ -141,7 +141,7 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(572, 225);
+            this.tabPage2.Size = new System.Drawing.Size(546, 225);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "Управление структурой";
             this.tabPage2.UseVisualStyleBackColor = true;
@@ -152,7 +152,7 @@
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(572, 225);
+            this.tabPage3.Size = new System.Drawing.Size(546, 225);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "Управление походкой";
             this.tabPage3.UseVisualStyleBackColor = true;
@@ -163,10 +163,32 @@
             this.tabPage4.Location = new System.Drawing.Point(4, 22);
             this.tabPage4.Name = "tabPage4";
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(572, 225);
+            this.tabPage4.Size = new System.Drawing.Size(546, 225);
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Управление из ФРУНД";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // gateGeneratorView
+            // 
+            this.gateGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gateGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gateGeneratorView.Location = new System.Drawing.Point(6, 6);
+            this.gateGeneratorView.Name = "gateGeneratorView";
+            this.gateGeneratorView.Size = new System.Drawing.Size(534, 213);
+            this.gateGeneratorView.TabIndex = 1;
+            // 
+            // frundGeneratorView
+            // 
+            this.frundGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.frundGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frundGeneratorView.Location = new System.Drawing.Point(6, 6);
+            this.frundGeneratorView.Name = "frundGeneratorView";
+            this.frundGeneratorView.Size = new System.Drawing.Size(534, 213);
+            this.frundGeneratorView.TabIndex = 0;
             // 
             // selectedServoView
             // 
@@ -187,28 +209,6 @@
             this.servousListView.Name = "servousListView";
             this.servousListView.Size = new System.Drawing.Size(534, 213);
             this.servousListView.TabIndex = 6;
-            // 
-            // gateGeneratorView
-            // 
-            this.gateGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gateGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gateGeneratorView.Location = new System.Drawing.Point(6, 6);
-            this.gateGeneratorView.Name = "gateGeneratorView";
-            this.gateGeneratorView.Size = new System.Drawing.Size(560, 213);
-            this.gateGeneratorView.TabIndex = 1;
-            // 
-            // frundGeneratorView
-            // 
-            this.frundGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.frundGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.frundGeneratorView.Location = new System.Drawing.Point(6, 6);
-            this.frundGeneratorView.Name = "frundGeneratorView";
-            this.frundGeneratorView.Size = new System.Drawing.Size(560, 213);
-            this.frundGeneratorView.TabIndex = 0;
             // 
             // logView
             // 

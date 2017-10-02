@@ -56,7 +56,7 @@ namespace HexapodGUIProject.ViewModels
             _storage.settings.Servous[selectedID].Angle = 
                 angle + _storage.settings.Servous[selectedID].Offset;
             int servoNumber = _storage.settings.Servous[selectedID].Number;
-            _hexapod.setAngle(servoNumber, angle);
+            _hexapod.setAngle(servoNumber, angle, false);
             onNewUpdateModel?.Invoke();
         }
 

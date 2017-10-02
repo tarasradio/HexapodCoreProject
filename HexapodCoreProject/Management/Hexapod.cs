@@ -33,9 +33,9 @@ namespace HexapodCoreProject.Management
             legs = _storage.settings.Legs;
         }
 
-        public void setAngle(int servoNumber, int angle)
+        public void setAngle(int servoNumber, int angle, bool useOffset = true)
         {
-            WriteAngle(servoNumber, angle);
+            WriteAngle(servoNumber, angle, useOffset);
         }
 
         public void setTibiaAngle(int legID, int angle)
@@ -80,10 +80,19 @@ namespace HexapodCoreProject.Management
             }
         }
 
-        private void WriteAngle(int servoNumber, int angle)
+        private void WriteAngle(int servoNumber, int angle, bool useOffset = true)
         {
-            int writeAngle = angle + _storage.settings.Servous[servoNumber].Offset;
-            _packetMaster.servoSetAngle(servoNumber, writeAngle);
+            //TODO: добавить учет реверса привода
+            int servoChunnel = _storage.settings.Servous[servoNumber].Channel;
+            if(useOffset)
+            {
+                if (angle < _storage.settings.Servous[servoNumber].minAngle)
+                angle = _storage.settings.Servous[servoNumber].minAngle;
+                if (angle > _storage.settings.Servous[servoNumber].maxAngle)
+                angle = _storage.settings.Servous[servoNumber].maxAngle;
+                angle += _storage.settings.Servous[servoNumber].Offset;
+            }
+            _packetMaster.servoSetAngle(servoChunnel, angle);
         }
     }
 }
