@@ -42,6 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\FileRunner.cs" />
+    <Compile Include="Core\FileStorage.cs" />
+    <Compile Include="Core\FrundMoveFile.cs" />
+    <Compile Include="Core\Move.cs" />
+    <Compile Include="Core\StringOperation.cs" />
     <Compile Include="FrundGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\FrundGeneratorView.cs">
@@ -56,6 +61,11 @@
       <Project>{46666a45-5734-4a86-a125-b44843a4c3aa}</Project>
       <Name>HexapodInterfacesProject</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\FrundGeneratorView.resx">
+      <DependentUpon>FrundGeneratorView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -20,6 +20,7 @@ namespace HexapodGUIProject
 {
     public partial class MainView : Form
     {
+        ILogMaster _logMaster;
         HexapodInstance hexapodInst;
         FrundGenerator frundGenerator;
         GateGenerator gateGenerator;
@@ -37,9 +38,9 @@ namespace HexapodGUIProject
         public void InitAll()
         {
             hexapodInst = new HexapodInstance("config.json");
-
-            frundGenerator = new FrundGenerator();
-            gateGenerator = new GateGenerator();
+            _logMaster = hexapodInst.getLogMaster();
+            frundGenerator = new FrundGenerator(hexapodInst.getHexapod(), _logMaster);
+            gateGenerator = new GateGenerator(hexapodInst.getHexapod(), _logMaster);
 
             hexapodInst.addMoveSource(frundGenerator);
             hexapodInst.addMoveSource(gateGenerator);
@@ -52,10 +53,12 @@ namespace HexapodGUIProject
 
             connectionState.Text = "Ожидание соединения";
 
+            rescanGenerators();
+
             _servousModel = 
                 new ServousModel(
                     hexapodInst.getStorage(),
-                hexapodInst.gethexapod(),
+                hexapodInst.getHexapod(),
                 hexapodInst.getLogMaster());
 
             _servousListPresenter = new ServousListPresenter(_servousModel);
@@ -87,21 +90,21 @@ namespace HexapodGUIProject
             }
             else
             {
-                string portName = listPortsBox.SelectedItem.ToString();
+                string portName = portsListBox.SelectedItem.ToString();
 
                 bool isOK = hexapodInst.getSerialPortMaster().Connect(portName);
 
                 if (isOK)
                 {
                     connectionState.Text = "Установленно соединение с " + portName;
-                    hexapodInst.getLogMaster().addMessage(
+                    _logMaster.addMessage(
                         "Открытие подключения - Подключение к " + portName + " открыто");
                     connectButton.Text = "Отключение";
                     isOpenConnect = true;
                 }
                 else
                 {
-                    hexapodInst.getLogMaster().addMessage(
+                    _logMaster.addMessage(
                         "Открытие подключения - Ошибка при подключении!");
                     connectionState.Text = "Ожидание соединения";
                 }
@@ -110,29 +113,49 @@ namespace HexapodGUIProject
 
         public void rescanOpenPorts()
         {
-            listPortsBox.Items.Clear();
+            portsListBox.Items.Clear();
 
             List<String> portsNames = new List<string>();
 
             bool isOpen = 
                 hexapodInst.getSerialPortMaster().getOpenPorts(ref portsNames);
 
-            listPortsBox.Items.AddRange(portsNames.ToArray());
+            portsListBox.Items.AddRange(portsNames.ToArray());
 
             if (isOpen == true)
             {
-                hexapodInst.getLogMaster().addMessage(
+                _logMaster.addMessage(
                     "Поиск портов - Найдены открытые порты");
                 connectButton.Enabled = true;
-                listPortsBox.SelectedIndex = 0;
+                portsListBox.SelectedIndex = 0;
             }
             else
             {
-                hexapodInst.getLogMaster().addMessage(
+                _logMaster.addMessage(
                     "Поиск портов - Открытых портов не найдено");
                 connectButton.Enabled = false;
-                listPortsBox.SelectedText = "";
+                portsListBox.SelectedText = "";
             }
+        }
+
+        private void rescanGenerators()
+        {
+            foreach(var source in hexapodInst.getSourceManager().getSources())
+            {
+                sourcesListBox.Items.Add(source.getName());
+            }
+        }
+
+        private void selectGeneratorButton_Click(object sender, EventArgs e)
+        {
+            if (sourcesListBox.SelectedItem == null) return;
+            string sourceName = sourcesListBox.SelectedItem.ToString();
+            hexapodInst.getSourceManager().selectSource(sourceName);
+        }
+
+        private void terminateSelectGenerator_Click(object sender, EventArgs e)
+        {
+            hexapodInst.getSourceManager().TerminateSource();
         }
     }
 }

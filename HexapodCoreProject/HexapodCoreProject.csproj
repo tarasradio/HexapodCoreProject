@@ -50,7 +50,6 @@
     <Compile Include="HexapodInstance.cs" />
     <Compile Include="Interfaces\IPacketMaster.cs" />
     <Compile Include="Interfaces\IPortMaster.cs" />
-    <Compile Include="Interfaces\IRobot.cs" />
     <Compile Include="Management\Hexapod.cs" />
     <Compile Include="Management\SourceManager.cs" />
     <Compile Include="Management\Storage.cs" />

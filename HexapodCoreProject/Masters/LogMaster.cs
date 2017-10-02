@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 using System.Threading;
 using System.IO;
 
+using HexapodInterfacesProject;
+
 namespace HexapodCoreProject.Masters
 {
-    public class LogMaster
+    public class LogMaster : ILogMaster
     {
         public delegate void newMessageHandler(string message);
         public event newMessageHandler onNewMessageAdded;

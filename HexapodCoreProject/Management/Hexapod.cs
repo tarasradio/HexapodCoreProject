@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
+using HexapodInterfacesProject;
 using HexapodCoreProject.Masters;
 using HexapodCoreProject.Elements;
 using HexapodCoreProject.Interfaces;

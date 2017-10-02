@@ -6,10 +6,8 @@ using System.Threading.Tasks;
 
 namespace HexapodInterfacesProject
 {
-    public interface IMoveSource
+    public interface ILogMaster
     {
-        string getName();
-        void Run();
-        void Terminate();
+        void addMessage(string text);
     }
 }

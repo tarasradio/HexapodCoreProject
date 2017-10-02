@@ -60,9 +60,14 @@ namespace HexapodCoreProject
             return _storage;
         }
 
-        public Hexapod gethexapod()
+        public Hexapod getHexapod()
         {
             return _hexapod;
+        }
+
+        public SourceManager getSourceManager()
+        {
+            return _sourceManager;
         }
     }
 }
