@@ -18,7 +18,7 @@ namespace HexapodCoreProject.Management
         {
             settings = new StorageSettings();
 
-            createDefaultSettingsFile();
+            //createDefaultSettingsFile();
         }
 
         public bool OpenFile(string fileName)

@@ -16,6 +16,7 @@ namespace FrundGeneratorProject.Core
         public ulong Duration { get; set; }
         public int CountRows { get; set; }
 
+
         public FrundMoveFile(string path)
         {
             _path = path;
@@ -49,13 +50,16 @@ namespace FrundGeneratorProject.Core
                         pos = StringOperation.SkipWhiteSpaces(line, pos);
                         pos = StringOperation.ReadValue(line, ref temp, pos);
                         ulong Time = ulong.Parse(temp.Replace(".", ""));
-
+                        
                         pos = StringOperation.SkipWhiteSpaces(line, pos);
                         pos = StringOperation.ReadValue(line, ref temp, pos);
                         double Angle = double.Parse(temp.Replace('.', ','));
 
                         //Переводим угол в градусы
                         Angle = (180.0 / Math.PI) * Angle;
+                        
+                        Angle *= -1;
+                        Angle += 90;
                         
                         nextMove = new Move(Time, Number, (int)Angle);
                         Moves.Add((Move)nextMove.Clone());

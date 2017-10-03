@@ -33,7 +33,7 @@ namespace HexapodCoreProject.Management
         {
             legs = _storage.settings.Legs;
         }
-
+         
         public void setAngle(int servoNumber, int angle, bool useOffset = true)
         {
             WriteAngle(servoNumber, angle, useOffset);
@@ -83,8 +83,14 @@ namespace HexapodCoreProject.Management
 
         private void WriteAngle(int servoNumber, int angle, bool useOffset = true)
         {
+
+            if (!_storage.settings.Servous.ContainsKey(servoNumber)) return;
             //TODO: добавить учет реверса привода
             int servoChunnel = _storage.settings.Servous[servoNumber].Channel;
+
+            if (_storage.settings.Servous[servoNumber].isReverce)
+                angle = 180 - angle;
+
             if(useOffset)
             {
                 if (angle < _storage.settings.Servous[servoNumber].minAngle)

@@ -32,7 +32,7 @@ namespace FrundGeneratorProject.Core
             _storage = storage;
             _logMaster = logMaster;
             _timer = new System.Timers.Timer();
-            _timeDelay = 50;
+            _timeDelay = 100;
             _timer.Interval = _timeDelay;
             _timer.Elapsed += TimerElapsedHandler;
             _timeCounter = 0;
@@ -41,7 +41,7 @@ namespace FrundGeneratorProject.Core
 
         private void TimerElapsedHandler(object sender, System.Timers.ElapsedEventArgs e)
         {
-            _timeCounter += _timeDelay;
+            _timeCounter += _timeDelay * 1000;
             executeMoves(_timeCounter);
         }
 
@@ -68,11 +68,17 @@ namespace FrundGeneratorProject.Core
         /// <param name="time">Прошедшее время (мс)</param>
         private void executeMoves(ulong time)
         {
-            Console.WriteLine("FRUND generator: time = " + time.ToString());
+            //Console.WriteLine("FRUND generator: time = " + time.ToString());
             //_logMaster.addMessage("FRUND generator: time = " + time.ToString());
 
             int servoNumber, Angle;
 
+            if ((_currentMoveID + 2) >= _storage.fileList[_currentFileID].Moves.Count)
+            {
+                Terminate();
+                return;
+            }
+                
             ulong moveTime = 
                 _storage.fileList[_currentFileID].Moves[_currentMoveID++].Time;
             while(moveTime < time)
@@ -80,12 +86,15 @@ namespace FrundGeneratorProject.Core
                 moveTime =
                 _storage.fileList[_currentFileID].Moves[_currentMoveID++].Time;
             }
-            while((moveTime >= time) && (moveTime < time + _timeDelay))
+            while(moveTime <= time + _timeDelay*1000)
             {
                 servoNumber = 
                     _storage.fileList[_currentFileID].Moves[_currentMoveID].ServoNumber;
                 Angle =
                     _storage.fileList[_currentFileID].Moves[_currentMoveID].Angle;
+
+                Console.WriteLine("FRUND generator: N = " + servoNumber.ToString());
+                
                 _robot.setAngle(servoNumber, Angle, true);
 
                 moveTime =

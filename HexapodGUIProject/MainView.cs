@@ -157,5 +157,10 @@ namespace HexapodGUIProject
         {
             hexapodInst.getSourceManager().TerminateSource();
         }
+
+        private void MainView_FormClosing(object sender, FormClosingEventArgs e)
+        {
+            hexapodInst.getStorage().SaveFile("config.json");
+        }
     }
 }

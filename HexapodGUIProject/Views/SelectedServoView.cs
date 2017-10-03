@@ -109,11 +109,12 @@ namespace HexapodGUIProject.Views
                     _presenter.getItem().minAngle,
                     _presenter.getItem().maxAngle);
 
-                if (dialog.ShowDialog() == DialogResult.OK)
-                {
-                    _presenter.setMinAngle(dialog.getLeftValue());
-                    _presenter.setMaxAngle(dialog.getRightValue());
-                }
+            dialog.StartPosition = FormStartPosition.CenterParent;
+            if (dialog.ShowDialog() == DialogResult.OK)
+            {
+                _presenter.setMinAngle(dialog.getLeftValue());
+                _presenter.setMaxAngle(dialog.getRightValue());
+            }
         }
 
         private void buttonSetOffset_Click(object sender, EventArgs e)
@@ -143,8 +144,10 @@ namespace HexapodGUIProject.Views
             _presenter.setReverce(checkBoxReverce.Checked);
         }
 
+
         private void trackAngle_Scroll(object sender, EventArgs e)
         {
+            int a = 0;
             if (_state == States.SHOW) return;
 
             int angle = trackAngle.Value;
@@ -154,7 +157,8 @@ namespace HexapodGUIProject.Views
             {
                 _presenter.setAngleWithoutOffset(angle);
             }
-            else
+
+            if (_state == States.TRACE)
             {
                 _presenter.setAngle(angle);
             }

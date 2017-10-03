@@ -42,6 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Core\GateRunner.cs" />
     <Compile Include="GateGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Views\GateGeneratorView.cs">
@@ -56,6 +57,11 @@
       <Project>{46666a45-5734-4a86-a125-b44843a4c3aa}</Project>
       <Name>HexapodInterfacesProject</Name>
     </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Views\GateGeneratorView.resx">
+      <DependentUpon>GateGeneratorView.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

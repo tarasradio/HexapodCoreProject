@@ -18,7 +18,7 @@ namespace HexapodCoreProject.Elements
         public int femurID = -1; // средняя часть ноги (вверх-вниз)
         public int coxaID = -1; // основная часть ноги (влево-вправо)
 
-        public Leg(int femur, int tibia, int coxa)
+        public Leg(int tibia, int femur, int coxa)
         {
             femurID = femur;
             tibiaID = tibia;

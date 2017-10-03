@@ -30,28 +30,28 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainView));
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.updateListPortsButton = new System.Windows.Forms.ToolStripButton();
             this.portsListBox = new System.Windows.Forms.ToolStripComboBox();
             this.connectButton = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
+            this.sourcesListBox = new System.Windows.Forms.ToolStripComboBox();
+            this.selectGeneratorButton = new System.Windows.Forms.ToolStripButton();
+            this.terminateSelectGenerator = new System.Windows.Forms.ToolStripButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.connectionState = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.servousListView = new HexapodGUIProject.Views.ServousListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.sourcesListBox = new System.Windows.Forms.ToolStripComboBox();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
-            this.selectGeneratorButton = new System.Windows.Forms.ToolStripButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
-            this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
-            this.servousListView = new HexapodGUIProject.Views.ServousListView();
             this.gateGeneratorView = new GateGeneratorProject.Views.GateGeneratorView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
             this.frundGeneratorView = new FrundGeneratorProject.Views.FrundGeneratorView();
+            this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
             this.logView = new HexapodGUIProject.Views.LogView();
-            this.terminateSelectGenerator = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -81,6 +81,11 @@
             this.toolStrip1.TabIndex = 4;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // toolStripSeparator3
+            // 
+            this.toolStripSeparator3.Name = "toolStripSeparator3";
+            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
+            // 
             // updateListPortsButton
             // 
             this.updateListPortsButton.AutoSize = false;
@@ -107,6 +112,47 @@
             this.connectButton.Size = new System.Drawing.Size(93, 36);
             this.connectButton.Text = "Подключиться";
             this.connectButton.Click += new System.EventHandler(this.connectButton_Click);
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
+            // 
+            // toolStripLabel1
+            // 
+            this.toolStripLabel1.Name = "toolStripLabel1";
+            this.toolStripLabel1.Size = new System.Drawing.Size(64, 36);
+            this.toolStripLabel1.Text = "Генератор";
+            // 
+            // sourcesListBox
+            // 
+            this.sourcesListBox.Name = "sourcesListBox";
+            this.sourcesListBox.Size = new System.Drawing.Size(121, 39);
+            // 
+            // selectGeneratorButton
+            // 
+            this.selectGeneratorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.selectGeneratorButton.Image = ((System.Drawing.Image)(resources.GetObject("selectGeneratorButton.Image")));
+            this.selectGeneratorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.selectGeneratorButton.Name = "selectGeneratorButton";
+            this.selectGeneratorButton.Size = new System.Drawing.Size(99, 36);
+            this.selectGeneratorButton.Text = "Переключиться";
+            this.selectGeneratorButton.Click += new System.EventHandler(this.selectGeneratorButton_Click);
+            // 
+            // terminateSelectGenerator
+            // 
+            this.terminateSelectGenerator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.terminateSelectGenerator.Image = ((System.Drawing.Image)(resources.GetObject("terminateSelectGenerator.Image")));
+            this.terminateSelectGenerator.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.terminateSelectGenerator.Name = "terminateSelectGenerator";
+            this.terminateSelectGenerator.Size = new System.Drawing.Size(75, 36);
+            this.terminateSelectGenerator.Text = "Остановить";
+            this.terminateSelectGenerator.Click += new System.EventHandler(this.terminateSelectGenerator_Click);
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
             // 
             // statusStrip1
             // 
@@ -150,6 +196,16 @@
             this.tabPage1.Text = "Таблица приводов";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
+            // servousListView
+            // 
+            this.servousListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.servousListView.Location = new System.Drawing.Point(6, 6);
+            this.servousListView.Name = "servousListView";
+            this.servousListView.Size = new System.Drawing.Size(534, 213);
+            this.servousListView.TabIndex = 6;
+            // 
             // tabPage2
             // 
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
@@ -171,73 +227,6 @@
             this.tabPage3.Text = "Управление походкой";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.frundGeneratorView);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(546, 225);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Управление из ФРУНД";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // sourcesListBox
-            // 
-            this.sourcesListBox.Name = "sourcesListBox";
-            this.sourcesListBox.Size = new System.Drawing.Size(121, 39);
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 39);
-            // 
-            // toolStripLabel1
-            // 
-            this.toolStripLabel1.Name = "toolStripLabel1";
-            this.toolStripLabel1.Size = new System.Drawing.Size(64, 36);
-            this.toolStripLabel1.Text = "Генератор";
-            // 
-            // selectGeneratorButton
-            // 
-            this.selectGeneratorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.selectGeneratorButton.Image = ((System.Drawing.Image)(resources.GetObject("selectGeneratorButton.Image")));
-            this.selectGeneratorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.selectGeneratorButton.Name = "selectGeneratorButton";
-            this.selectGeneratorButton.Size = new System.Drawing.Size(99, 36);
-            this.selectGeneratorButton.Text = "Переключиться";
-            this.selectGeneratorButton.Click += new System.EventHandler(this.selectGeneratorButton_Click);
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
-            // 
-            // toolStripSeparator3
-            // 
-            this.toolStripSeparator3.Name = "toolStripSeparator3";
-            this.toolStripSeparator3.Size = new System.Drawing.Size(6, 39);
-            // 
-            // selectedServoView
-            // 
-            this.selectedServoView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectedServoView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.selectedServoView.Location = new System.Drawing.Point(572, 42);
-            this.selectedServoView.Name = "selectedServoView";
-            this.selectedServoView.Size = new System.Drawing.Size(210, 388);
-            this.selectedServoView.TabIndex = 8;
-            // 
-            // servousListView
-            // 
-            this.servousListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.servousListView.Location = new System.Drawing.Point(6, 6);
-            this.servousListView.Name = "servousListView";
-            this.servousListView.Size = new System.Drawing.Size(534, 213);
-            this.servousListView.TabIndex = 6;
-            // 
             // gateGeneratorView
             // 
             this.gateGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -248,6 +237,17 @@
             this.gateGeneratorView.Name = "gateGeneratorView";
             this.gateGeneratorView.Size = new System.Drawing.Size(534, 213);
             this.gateGeneratorView.TabIndex = 1;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.frundGeneratorView);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(546, 225);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Управление из ФРУНД";
+            this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // frundGeneratorView
             // 
@@ -260,6 +260,16 @@
             this.frundGeneratorView.Size = new System.Drawing.Size(534, 213);
             this.frundGeneratorView.TabIndex = 0;
             // 
+            // selectedServoView
+            // 
+            this.selectedServoView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selectedServoView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.selectedServoView.Location = new System.Drawing.Point(572, 42);
+            this.selectedServoView.Name = "selectedServoView";
+            this.selectedServoView.Size = new System.Drawing.Size(210, 388);
+            this.selectedServoView.TabIndex = 8;
+            // 
             // logView
             // 
             this.logView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -268,16 +278,6 @@
             this.logView.Name = "logView";
             this.logView.Size = new System.Drawing.Size(554, 131);
             this.logView.TabIndex = 3;
-            // 
-            // terminateSelectGenerator
-            // 
-            this.terminateSelectGenerator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.terminateSelectGenerator.Image = ((System.Drawing.Image)(resources.GetObject("terminateSelectGenerator.Image")));
-            this.terminateSelectGenerator.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.terminateSelectGenerator.Name = "terminateSelectGenerator";
-            this.terminateSelectGenerator.Size = new System.Drawing.Size(75, 36);
-            this.terminateSelectGenerator.Text = "Остановить";
-            this.terminateSelectGenerator.Click += new System.EventHandler(this.terminateSelectGenerator_Click);
             // 
             // MainView
             // 
@@ -291,6 +291,7 @@
             this.Controls.Add(this.logView);
             this.Name = "MainView";
             this.Text = "Управление роботом Гексаподом (Hexapod Robot Control)";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.MainView_FormClosing);
             this.toolStrip1.ResumeLayout(false);
             this.toolStrip1.PerformLayout();
             this.statusStrip1.ResumeLayout(false);

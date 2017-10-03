@@ -14,6 +14,8 @@ namespace GateGeneratorProject
         ILogMaster _logMaster;
         IRobot _hexapod;
 
+        Core.GateRunner _runner;
+
         enum RUN_STATES { RUN, TERMINATE};
         RUN_STATES currentRunState;
 
@@ -21,6 +23,8 @@ namespace GateGeneratorProject
         {
             _hexapod = hexapod;
             _logMaster = logMaster;
+
+            _runner = new Core.GateRunner(_hexapod);
 
             currentRunState = RUN_STATES.TERMINATE;
         }
@@ -40,6 +44,27 @@ namespace GateGeneratorProject
         {
             _logMaster.addMessage("GATE Genarator - Terminate");
             currentRunState = RUN_STATES.TERMINATE;
+        }
+
+        public void startMoveForward()
+        {
+            if (currentRunState == RUN_STATES.RUN)
+            {
+                _logMaster.addMessage("Start Move Forward");
+                _runner.Run();
+            }
+            else
+            {
+                _logMaster.addMessage("Запуск невозможен: источник не активен");
+            }
+
+        }
+
+        // Остановка движения
+        public void stopMove()
+        {
+            _logMaster.addMessage("Stop Move");
+            _runner.Terminate();
         }
     }
 }
