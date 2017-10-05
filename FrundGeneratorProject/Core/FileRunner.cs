@@ -69,7 +69,7 @@ namespace FrundGeneratorProject.Core
         private void executeMoves(ulong time)
         {
             //Console.WriteLine("FRUND generator: time = " + time.ToString());
-            //_logMaster.addMessage("FRUND generator: time = " + time.ToString());
+            _logMaster.addMessage("FRUND generator: time = " + time.ToString());
 
             int servoNumber, Angle;
 

@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using HexapodGUIProject.Utils;
 
 namespace HexapodGUIProject.Views
 {
@@ -19,9 +20,12 @@ namespace HexapodGUIProject.Views
 
         public void addMessage(string message)
         {
-            logTextBox.AppendText(message);
-            logTextBox.Select(logTextBox.Text.Length, 0);
-            logTextBox.ScrollToCaret();
+            this.InvokeThread(()=>{
+                logTextBox.AppendText(message);
+                logTextBox.Select(logTextBox.Text.Length, 0);
+                logTextBox.ScrollToCaret();
+            });
+
         }
     }
 }
