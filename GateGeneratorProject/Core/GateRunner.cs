@@ -130,7 +130,7 @@ namespace GateGeneratorProject.Core
             _timer.Start();
             
 
-            //_logMaster.addMessage("GATE generator: Run Moves");
+            //_logMaster.addMessage("GATE generator: Enable Moves");
         }
 
         public void Terminate()

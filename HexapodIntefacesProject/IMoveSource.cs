@@ -8,8 +8,8 @@ namespace HexapodInterfacesProject
 {
     public interface IMoveSource
     {
-        string getName();
-        void Run();
-        void Terminate();
+        string Name { get; }
+        void Enable();
+        void Disable();
     }
 }

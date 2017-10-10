@@ -14,22 +14,20 @@ namespace FrundGeneratorProject.Core
     /// </summary>
     public class FileRunner
     {
-        FileStorage _storage;
-        ILogMaster _logMaster;
-        IRobot _robot;
-
-        System.Timers.Timer _timer;
+        readonly ILogMaster _logMaster;
+        readonly IRobot _robot;
+        readonly System.Timers.Timer _timer;
 
         static ulong _timeCounter;
         static uint _timeDelay;
 
-        uint _currentFileID;
         int _currentMoveID;
 
-        public FileRunner(IRobot robot, FileStorage storage, ILogMaster logMaster)
+        private FrundMoveFile _currentMove;
+
+        public FileRunner(IRobot robot, ILogMaster logMaster)
         {
             _robot = robot;
-            _storage = storage;
             _logMaster = logMaster;
             _timer = new System.Timers.Timer();
             _timeDelay = 100;
@@ -45,14 +43,14 @@ namespace FrundGeneratorProject.Core
             executeMoves(_timeCounter);
         }
 
-        public void Run(uint fileId)
+        public void Run(FrundMoveFile move)
         {
-            _currentFileID = fileId;
+            _currentMove = move;
             _timeCounter = 0;
             _currentMoveID = 0;
             _timer.Start();
 
-            _logMaster.addMessage("FRUND generator: Run Moves");
+            _logMaster.addMessage("FRUND generator: Enable Moves");
         }
 
         public void Terminate()
@@ -73,32 +71,27 @@ namespace FrundGeneratorProject.Core
 
             int servoNumber, Angle;
 
-            if ((_currentMoveID + 2) >= _storage.fileList[_currentFileID].Moves.Count)
+            if ((_currentMoveID + 2) >= _currentMove.Moves.Count)
             {
                 Terminate();
                 return;
             }
                 
-            ulong moveTime = 
-                _storage.fileList[_currentFileID].Moves[_currentMoveID++].Time;
+            ulong moveTime = _currentMove.Moves[_currentMoveID++].Time;
             while(moveTime < time)
             {
-                moveTime =
-                _storage.fileList[_currentFileID].Moves[_currentMoveID++].Time;
+                moveTime = _currentMove.Moves[_currentMoveID++].Time;
             }
             while(moveTime <= time + _timeDelay*1000)
             {
-                servoNumber = 
-                    _storage.fileList[_currentFileID].Moves[_currentMoveID].ServoNumber;
-                Angle =
-                    _storage.fileList[_currentFileID].Moves[_currentMoveID].Angle;
+                servoNumber = _currentMove.Moves[_currentMoveID].ServoNumber;
+                Angle = _currentMove.Moves[_currentMoveID].Angle;
 
                 Console.WriteLine("FRUND generator: N = " + servoNumber.ToString());
                 
                 _robot.setAngle(servoNumber, Angle, true);
 
-                moveTime =
-                _storage.fileList[_currentFileID].Moves[_currentMoveID++].Time;
+                moveTime = _currentMove.Moves[_currentMoveID++].Time;
             }
         }
     }

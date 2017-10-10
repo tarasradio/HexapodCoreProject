@@ -10,14 +10,15 @@ namespace GateGeneratorProject
 {
     public class GateGenerator : IMoveSource
     {
-        string Name = "GATE Generator";
         ILogMaster _logMaster;
         IRobot _hexapod;
 
         Core.GateRunner _runner;
 
-        enum RUN_STATES { RUN, TERMINATE};
+        enum RUN_STATES { ENABLED, DISABLED};
         RUN_STATES currentRunState;
+
+        public string Name => "GATE Generator";
 
         public GateGenerator(IRobot hexapod, ILogMaster logMaster)
         {
@@ -26,29 +27,25 @@ namespace GateGeneratorProject
 
             _runner = new Core.GateRunner(_hexapod);
 
-            currentRunState = RUN_STATES.TERMINATE;
+            currentRunState = RUN_STATES.DISABLED;
         }
 
-        public string getName()
+
+        public void Enable()
         {
-            return this.Name;
+            _logMaster.addMessage("GATE Genarator - Enable");
+            currentRunState = RUN_STATES.ENABLED;
         }
 
-        public void Run()
+        public void Disable()
         {
-            _logMaster.addMessage("GATE Genarator - Run");
-            currentRunState = RUN_STATES.RUN;
-        }
-
-        public void Terminate()
-        {
-            _logMaster.addMessage("GATE Genarator - Terminate");
-            currentRunState = RUN_STATES.TERMINATE;
+            _logMaster.addMessage("GATE Genarator - Disable");
+            currentRunState = RUN_STATES.DISABLED;
         }
 
         public void startMoveForward()
         {
-            if (currentRunState == RUN_STATES.RUN)
+            if (currentRunState == RUN_STATES.ENABLED)
             {
                 _logMaster.addMessage("Start Move Forward");
                 _runner.Run();

@@ -43,7 +43,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\FileRunner.cs" />
-    <Compile Include="Core\FileStorage.cs" />
     <Compile Include="Core\FrundMoveFile.cs" />
     <Compile Include="Core\Move.cs" />
     <Compile Include="Core\StringOperation.cs" />

@@ -48,7 +48,7 @@ namespace FrundGeneratorProject.Views
             {
                 string fileName = dialog.FileName;
 
-                bool isSuccess = _generator.getStorage().addFile(fileName);
+                bool isSuccess = _generator.AddFile(fileName);
 
                 if (isSuccess)
                 {
@@ -62,17 +62,19 @@ namespace FrundGeneratorProject.Views
         {
             state = States.UPDATE;
 
-            int countRows = _generator.getStorage().fileList.Count;
+            int countRows = _generator.MoveFiles.Count;
 
             filesListView.RowCount = countRows;
 
             int index = 0;
-            foreach (var item in _generator.getStorage().fileList)
+            for(int i = 0; i<_generator.MoveFiles.Count; i++)
             {
-                filesListView[0, index].Value = item.Key;
-                filesListView[1, index].Value = item.Value.Name;
-                filesListView[2, index].Value = item.Value.Title;
-                filesListView[3, index].Value = item.Value.Duration;
+                var item = _generator.MoveFiles[i];
+
+                filesListView[0, index].Value = i;
+                filesListView[1, index].Value = item.Name;
+                filesListView[2, index].Value = item.Title;
+                filesListView[3, index].Value = item.Duration;
                 index++;
             }
 
@@ -95,9 +97,8 @@ namespace FrundGeneratorProject.Views
 
         private void startMoveButton_Click(object sender, EventArgs e)
         {
-            uint id = uint.Parse(
-                filesListView.CurrentRow.Cells[0].Value.ToString());
-            _generator.startMove(id);
+            if (filesListView.CurrentRow != null)            
+                _generator.startMove(filesListView.CurrentRow.Index);
         }
 
         private void stopMoveButton_Click(object sender, EventArgs e)

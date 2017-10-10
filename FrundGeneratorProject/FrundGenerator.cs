@@ -11,56 +11,65 @@ namespace FrundGeneratorProject
 {
     public class FrundGenerator : IMoveSource
     {
-        enum RUN_STATES { RUN, TERMINATE };
+        enum RUN_STATES
+        {
+            ENABLED,
+            DISABLED
+        };
+
         RUN_STATES currentRunState;
-
-        string Name = "FRUND Generator";
-        ILogMaster _logMaster;
+        readonly ILogMaster _logMaster;
+        readonly FileRunner _runner;
         IRobot _hexapod;
-        public FileStorage _fileStorage;
 
-        FileRunner _runner;
+        public List<FrundMoveFile> MoveFiles;
+        
+
+        public string Name => "FRUND Generator";
 
         public FrundGenerator(IRobot hexapod, ILogMaster logMaster)
         {
             _hexapod = hexapod;
             _logMaster = logMaster;
-            _fileStorage = new FileStorage();
-            _runner = new FileRunner(hexapod, _fileStorage, logMaster);
+            MoveFiles = new List<FrundMoveFile>();
 
-            currentRunState = RUN_STATES.TERMINATE;
+            _runner = new FileRunner(hexapod, logMaster);
+
+            currentRunState = RUN_STATES.DISABLED;
         }
 
-        public string getName()
+
+        // Считывает новый файл
+        public bool AddFile(string fileName)
         {
-            return this.Name;
+            if (!System.IO.File.Exists(fileName))
+                return false;
+
+            FrundMoveFile file = new FrundMoveFile(fileName);
+            MoveFiles.Add(file);
+            return true;
         }
 
-        public void Run()
+
+        public void Enable()
         {
-            _logMaster.addMessage("FRUND Genarator - Run");
-            currentRunState = RUN_STATES.RUN;
+            _logMaster.addMessage("FRUND Genarator - Enable");
+            currentRunState = RUN_STATES.ENABLED;
         }
 
-        public void Terminate()
+        public void Disable()
         {
-            _logMaster.addMessage("FRUND Genarator - Terminate");
-            currentRunState = RUN_STATES.TERMINATE;
-        }
-
-        public FileStorage getStorage()
-        {
-            return _fileStorage;
+            _logMaster.addMessage("FRUND Genarator - Disable");
+            currentRunState = RUN_STATES.DISABLED;
         }
 
         // Запуск движения
-        public void startMove(uint id)
+        public void startMove(int id)
         {
-            if(currentRunState == RUN_STATES.RUN)
+            if(currentRunState == RUN_STATES.ENABLED)
             {
-                _logMaster.addMessage("Start Move From " +
-                _fileStorage.fileList[id].Name);
-                _runner.Run(id);
+                _logMaster.addMessage($"Start Move From {MoveFiles[id].Title}");
+                _runner.Run(MoveFiles[id]);
             }
             else
             {
@@ -75,6 +84,7 @@ namespace FrundGeneratorProject
             _logMaster.addMessage("Stop Move");
             _runner.Terminate();
         }
+
     }
    
 }

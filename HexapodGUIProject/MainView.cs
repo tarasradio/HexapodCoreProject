@@ -145,7 +145,7 @@ namespace HexapodGUIProject
         {
             foreach(var source in hexapodInst.getSourceManager().getSources())
             {
-                sourcesListBox.Items.Add(source.getName());
+                sourcesListBox.Items.Add(source.Name);
             }
         }
 
