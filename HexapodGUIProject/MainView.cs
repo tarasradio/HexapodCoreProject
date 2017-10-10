@@ -103,6 +103,7 @@ namespace HexapodGUIProject
                         "Открытие подключения - Подключение к " + portName + " открыто");
                     connectButton.Text = "Отключение";
                     isOpenConnect = true;
+                    hexapodInst.MoveToStart();
                 }
                 else
                 {
@@ -163,6 +164,11 @@ namespace HexapodGUIProject
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)
         {
             hexapodInst.getStorage().SaveFile("config.json");
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            hexapodInst.MoveToStart();
         }
     }
 }

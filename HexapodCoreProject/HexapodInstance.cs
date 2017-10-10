@@ -69,5 +69,15 @@ namespace HexapodCoreProject
         {
             return _sourceManager;
         }
+
+        /// <summary>
+        /// В стартовое положение
+        /// </summary>
+        public void MoveToStart()
+        {
+            _hexapod.setAllCoxaAngle(90);
+            _hexapod.setAllFemurAngle(90);
+            _hexapod.setAllTibiaAngle(90);
+        }
     }
 }

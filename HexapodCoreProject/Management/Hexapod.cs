@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -83,22 +84,30 @@ namespace HexapodCoreProject.Management
 
         private void WriteAngle(int servoNumber, int angle, bool useOffset = true)
         {
-
+           
             if (!_storage.settings.Servous.ContainsKey(servoNumber)) return;
             //TODO: добавить учет реверса привода
             int servoChunnel = _storage.settings.Servous[servoNumber].Channel;
 
-            if (_storage.settings.Servous[servoNumber].isReverce)
-                angle = 180 - angle;
-
             if(useOffset)
             {
                 if (angle < _storage.settings.Servous[servoNumber].minAngle)
-                angle = _storage.settings.Servous[servoNumber].minAngle;
+                    angle = _storage.settings.Servous[servoNumber].minAngle;
                 if (angle > _storage.settings.Servous[servoNumber].maxAngle)
-                angle = _storage.settings.Servous[servoNumber].maxAngle;
+                    angle = _storage.settings.Servous[servoNumber].maxAngle;
+
                 angle += _storage.settings.Servous[servoNumber].Offset;
+                if (angle < 0)
+                    angle = 0;
+
+                if (angle > 180)
+                    angle = 180;
             }
+
+            if (_storage.settings.Servous[servoNumber].isReverce)
+                angle = 180 - angle;
+            
+
             _packetMaster.servoSetAngle(servoChunnel, angle);
         }
     }
