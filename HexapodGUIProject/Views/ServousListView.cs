@@ -54,6 +54,20 @@ namespace HexapodGUIProject.Views
             servousList.Columns[2].MinimumWidth = 100;
         }
 
+        public void selectId(int id)
+        {
+            state = States.UPDATE;
+            for (int i = 0; i <servousList.RowCount; i++)
+            {
+                if(int.Parse(servousList[0, i].Value.ToString()) == id)
+                {
+                    servousList.CurrentCell = servousList[0, i];
+                    //servousList[0, i].Selected = true;
+                }
+            }
+            state = States.SHOW;
+        }
+
         public void updateFromModel()
         {
             state = States.UPDATE;

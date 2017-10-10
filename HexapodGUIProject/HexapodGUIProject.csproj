@@ -70,6 +70,12 @@
     <Compile Include="Views\LogView.Designer.cs">
       <DependentUpon>LogView.cs</DependentUpon>
     </Compile>
+    <Compile Include="Views\OneServoView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\OneServoView.Designer.cs">
+      <DependentUpon>OneServoView.cs</DependentUpon>
+    </Compile>
     <Compile Include="Views\SelectedServoView.cs">
       <SubType>UserControl</SubType>
     </Compile>
@@ -81,6 +87,12 @@
     </Compile>
     <Compile Include="Views\ServousListView.Designer.cs">
       <DependentUpon>ServousListView.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Views\StructureView.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Views\StructureView.Designer.cs">
+      <DependentUpon>StructureView.cs</DependentUpon>
     </Compile>
     <EmbeddedResource Include="MainView.resx">
       <DependentUpon>MainView.cs</DependentUpon>
@@ -100,11 +112,17 @@
     <EmbeddedResource Include="Views\LogView.resx">
       <DependentUpon>LogView.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Views\OneServoView.resx">
+      <DependentUpon>OneServoView.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Views\SelectedServoView.resx">
       <DependentUpon>SelectedServoView.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Views\ServousListView.resx">
       <DependentUpon>ServousListView.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Views\StructureView.resx">
+      <DependentUpon>StructureView.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>

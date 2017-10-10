@@ -80,6 +80,11 @@ namespace HexapodGUIProject.ViewModels
             onNewSelectID?.Invoke(selectedID);
             _logMaster.addMessage("Выбрана строка" + ID);
         }
+        
+        public Leg getLeg(int id)
+        {
+            return _storage.settings.Legs[id];
+        }
 
         public Servo getItem()
         {

@@ -19,6 +19,12 @@ namespace HexapodGUIProject.ViewPresenters
         {
             _model = model;
             model.onNewUpdateModel += onNewUpdateModelHandler;
+            model.onNewSelectID += Model_onNewSelectID;
+        }
+
+        private void Model_onNewSelectID(int id)
+        {
+            _view.selectId(id);
         }
 
         private void onNewUpdateModelHandler()

@@ -65,8 +65,10 @@ namespace HexapodGUIProject
             _selectedServoPresenter = new SelectedServousPresenter(_servousModel);
             servousListView.setPresenter(_servousListPresenter);
             selectedServoView.setPresenter(_selectedServoPresenter);
-
+            
             servousListView.updateFromModel();
+
+            structureView.Init(_servousModel, hexapodInst.getStorage());
         }
 
         private void updateListPortsButton_Click(object sender, EventArgs e)

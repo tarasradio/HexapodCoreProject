@@ -44,18 +44,20 @@
             this.connectionState = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.servousListView = new HexapodGUIProject.Views.ServousListView();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.gateGeneratorView = new GateGeneratorProject.Views.GateGeneratorView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.frundGeneratorView = new FrundGeneratorProject.Views.FrundGeneratorView();
             this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
+            this.servousListView = new HexapodGUIProject.Views.ServousListView();
+            this.gateGeneratorView = new GateGeneratorProject.Views.GateGeneratorView();
+            this.frundGeneratorView = new FrundGeneratorProject.Views.FrundGeneratorView();
             this.logView = new HexapodGUIProject.Views.LogView();
+            this.structureView = new HexapodGUIProject.Views.StructureView();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
+            this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
             this.SuspendLayout();
@@ -196,18 +198,9 @@
             this.tabPage1.Text = "Таблица приводов";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // servousListView
-            // 
-            this.servousListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.servousListView.Location = new System.Drawing.Point(6, 6);
-            this.servousListView.Name = "servousListView";
-            this.servousListView.Size = new System.Drawing.Size(534, 213);
-            this.servousListView.TabIndex = 6;
-            // 
             // tabPage2
             // 
+            this.tabPage2.Controls.Add(this.structureView);
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
@@ -227,17 +220,6 @@
             this.tabPage3.Text = "Управление походкой";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
-            // gateGeneratorView
-            // 
-            this.gateGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gateGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gateGeneratorView.Location = new System.Drawing.Point(6, 6);
-            this.gateGeneratorView.Name = "gateGeneratorView";
-            this.gateGeneratorView.Size = new System.Drawing.Size(534, 213);
-            this.gateGeneratorView.TabIndex = 1;
-            // 
             // tabPage4
             // 
             this.tabPage4.Controls.Add(this.frundGeneratorView);
@@ -248,6 +230,37 @@
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Управление из ФРУНД";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // selectedServoView
+            // 
+            this.selectedServoView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selectedServoView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.selectedServoView.Location = new System.Drawing.Point(572, 42);
+            this.selectedServoView.Name = "selectedServoView";
+            this.selectedServoView.Size = new System.Drawing.Size(210, 388);
+            this.selectedServoView.TabIndex = 8;
+            // 
+            // servousListView
+            // 
+            this.servousListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.servousListView.Location = new System.Drawing.Point(6, 6);
+            this.servousListView.Name = "servousListView";
+            this.servousListView.Size = new System.Drawing.Size(534, 213);
+            this.servousListView.TabIndex = 6;
+            // 
+            // gateGeneratorView
+            // 
+            this.gateGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gateGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gateGeneratorView.Location = new System.Drawing.Point(6, 6);
+            this.gateGeneratorView.Name = "gateGeneratorView";
+            this.gateGeneratorView.Size = new System.Drawing.Size(534, 213);
+            this.gateGeneratorView.TabIndex = 1;
             // 
             // frundGeneratorView
             // 
@@ -260,16 +273,6 @@
             this.frundGeneratorView.Size = new System.Drawing.Size(534, 213);
             this.frundGeneratorView.TabIndex = 0;
             // 
-            // selectedServoView
-            // 
-            this.selectedServoView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectedServoView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.selectedServoView.Location = new System.Drawing.Point(572, 42);
-            this.selectedServoView.Name = "selectedServoView";
-            this.selectedServoView.Size = new System.Drawing.Size(210, 388);
-            this.selectedServoView.TabIndex = 8;
-            // 
             // logView
             // 
             this.logView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
@@ -278,6 +281,18 @@
             this.logView.Name = "logView";
             this.logView.Size = new System.Drawing.Size(554, 131);
             this.logView.TabIndex = 3;
+            // 
+            // structureView
+            // 
+            this.structureView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.structureView.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.structureView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.structureView.Location = new System.Drawing.Point(6, 6);
+            this.structureView.Name = "structureView";
+            this.structureView.Size = new System.Drawing.Size(534, 213);
+            this.structureView.TabIndex = 0;
             // 
             // MainView
             // 
@@ -298,6 +313,7 @@
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);
+            this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -330,6 +346,7 @@
         private System.Windows.Forms.ToolStripButton selectGeneratorButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton terminateSelectGenerator;
+        private Views.StructureView structureView;
     }
 }
 
