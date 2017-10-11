@@ -40,25 +40,41 @@ namespace FrundGeneratorProject.Core
             var file = (FrundMoveFile)ofile;
             var watch = Stopwatch.StartNew();
 
-            foreach(var frame in file.Frames)
+            int i = 0;
+            while (i < file.Frames.Count && _isRunning)
             {
-                if (!_isRunning)
-                    return;
+                long currentTime = watch.ElapsedMilliseconds;
 
-                int currentTime =  watch.Elapsed.Milliseconds;
-                int delay = (frame.Time / 1000)- currentTime ;// TODO: int & ulong
+                // Пропускаем опоздавшие фреймы
+                int delay = (int)(file.Frames[i].Time / 1000 - currentTime);
 
-                if(delay > 0)
+                if (delay < 0)
+                {
+                    while ((i < file.Frames.Count) && (file.Frames[i].Time / 1000 < currentTime))
+                        i++;
+
+                    if(i >= file.Frames.Count)
+                        break;
+                }
+                else
+                {
+                    // Ждем, если задержка большая
                     Thread.Sleep(delay);
+                }
 
-                ExecuteFrame(frame);
+                ExecuteFrame(file.Frames[i]);
             }
+
+            _logMaster.addMessage("FRUND generator: move ended");
         }
 
         void ExecuteFrame(MoveFrame frame)
         {
+            //_logMaster.addMessage($"FRUND generator: time = {frame.Time}");
+
             foreach(var move in frame.Moves)
             {
+                //_logMaster.addMessage($"FRUND generator: N = {move.ServoNumber}");
                 _robot.setAngle(move.ServoNumber, move.Angle, true);
             }
         }
