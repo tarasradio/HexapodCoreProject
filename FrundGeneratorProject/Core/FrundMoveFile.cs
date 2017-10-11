@@ -10,15 +10,15 @@ namespace FrundGeneratorProject.Core
     {
         public string Name { get; private set; }     // название файла (из пути)
         public string Title { get; private set; }    // Псевдоним файл
-        public ulong Duration { get; private set; }
+        public int Duration { get; private set; }
         public int CountRows { get; private set; }
 
 
-        public List<Move> Moves { get; private set; }
+        public List<MoveFrame> Frames { get; private set; }
 
         public FrundMoveFile(string path)
         {
-            Moves = new List<Move>();
+            Frames = new List<MoveFrame>();
             OpenFile(path);
             Name = System.IO.Path.GetFileNameWithoutExtension(path);
             Title = "Файл движений";
@@ -35,9 +35,12 @@ namespace FrundGeneratorProject.Core
                 if (lines.Length == 0)
                     return false;
 
-                Moves.Clear();
+                Frames.Clear();
                 CountRows = 0;
-                Move nextMove;
+
+                MoveFrame currentFrame = new MoveFrame();
+                int lastTime = 0;
+                bool isFirst = true;
 
                 foreach (string line in lines)
                 {
@@ -45,28 +48,48 @@ namespace FrundGeneratorProject.Core
 
                     pos = StringOperation.SkipWhiteSpaces(line, pos);
                     pos = StringOperation.ReadValue(line, ref temp, pos);
-                    int Number = int.Parse(temp);
+                    int number = int.Parse(temp);
 
                     pos = StringOperation.SkipWhiteSpaces(line, pos);
                     pos = StringOperation.ReadValue(line, ref temp, pos);
-                    ulong Time = ulong.Parse(temp.Replace(".", ""));
+                    int time = int.Parse(temp.Replace(".", ""));
 
                     pos = StringOperation.SkipWhiteSpaces(line, pos);
                     pos = StringOperation.ReadValue(line, ref temp, pos);
-                    double Angle = double.Parse(temp.Replace('.', ','));
+                    double angle = double.Parse(temp.Replace('.', ','));
 
                     //Переводим угол в градусы
-                    Angle = (180.0 / Math.PI) * Angle;
+                    angle = (180.0 / Math.PI) * angle;
 
-                    Angle *= -1;
-                    Angle += 90;
+                    angle *= -1;
+                    angle += 90;
 
-                    nextMove = new Move(Time, Number, (int)Angle);
-                    Moves.Add((Move)nextMove.Clone());
+                    // Установка lastTime первого кадра
+                    if(isFirst)
+                    {
+                        lastTime = time;
+                        isFirst = false;
+                    }
+
+                    // Проверяем, начался ли новый фрейм
+                    if(time > lastTime)
+                    {
+                        currentFrame.Time = lastTime;
+                        Frames.Add(currentFrame);
+                        currentFrame = new MoveFrame();
+                    }
+
+                    currentFrame.AddMove(number, (int)angle);
+                    lastTime = time;
 
                     CountRows++;
-                    Duration = Time;
+                    Duration = time;
                 }
+
+                // Добавление последнего фрейма
+                currentFrame.Time = lastTime;
+                Frames.Add(currentFrame);
+
                 return true;
 
             }

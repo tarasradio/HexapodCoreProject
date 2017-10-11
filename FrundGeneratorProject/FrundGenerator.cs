@@ -17,11 +17,10 @@ namespace FrundGeneratorProject
             DISABLED
         };
 
-        RUN_STATES currentRunState;
-        readonly ILogMaster _logMaster;
-        readonly FileRunner _runner;
-        IRobot _hexapod;
-
+        private  RUN_STATES currentRunState;
+        private readonly ILogMaster _logMaster;
+        private readonly IFileRunner _runner;
+        private readonly IRobot _hexapod;
         public List<FrundMoveFile> MoveFiles;
         
 
@@ -33,7 +32,7 @@ namespace FrundGeneratorProject
             _logMaster = logMaster;
             MoveFiles = new List<FrundMoveFile>();
 
-            _runner = new FileRunner(hexapod, logMaster);
+            _runner = new FileRunner2(hexapod, logMaster);
 
             currentRunState = RUN_STATES.DISABLED;
         }

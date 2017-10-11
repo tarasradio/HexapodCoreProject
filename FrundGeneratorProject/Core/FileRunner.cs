@@ -12,7 +12,7 @@ namespace FrundGeneratorProject.Core
     /// <summary>
     /// Непосредственно проигрывает файл с движениями
     /// </summary>
-    public class FileRunner
+    public class FileRunner : IFileRunner
     {
         readonly ILogMaster _logMaster;
         readonly IRobot _robot;

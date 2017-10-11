@@ -9,22 +9,20 @@ namespace FrundGeneratorProject.Core
     /// <summary>
     /// Описывает одно изменение положения одного двигателя
     /// </summary>
-    public class Move
+    public class Move : ICloneable
     {
-        public ulong Time { get; set; } // время (в мс)
         public int ServoNumber { get; set; }
         public int Angle { get; set; }
 
-        public Move(ulong time, int servonumber, int angle)
+        public Move(int servonumber, int angle)
         {
-            this.Time = time;
             this.ServoNumber = servonumber;
             this.Angle = angle;
         }
 
         public object Clone()
         {
-            return new Move(Time, ServoNumber, Angle);
+            return new Move(ServoNumber, Angle);
         }
     }
 }

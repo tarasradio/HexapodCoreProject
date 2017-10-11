@@ -42,9 +42,11 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Core\FileRunner.cs" />
+    <Compile Include="Core\FileRunner2.cs" />
     <Compile Include="Core\FrundMoveFile.cs" />
+    <Compile Include="Core\IFileRunner.cs" />
     <Compile Include="Core\Move.cs" />
+    <Compile Include="Core\MoveFrame.cs" />
     <Compile Include="Core\StringOperation.cs" />
     <Compile Include="FrundGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
