@@ -69,23 +69,18 @@ namespace HexapodCoreProject.Masters
         public bool Connect(string portName)
         {
             bool isOK = false;
-            try
-            {
-                port = new System.IO.Ports.SerialPort(portName);
-                port.BaudRate = 9600;
-                port.DataBits = 8;
-                port.Open();
 
-                if (port.IsOpen)
-                {
-                    isOpenConnect = true;
-                    isOK = true;
-                }
-            }
-            catch (Exception ex)
-            {
+            port = new System.IO.Ports.SerialPort(portName);
+            port.BaudRate = 9600;
+            port.DataBits = 8;
+            port.Open();
 
+            if (port.IsOpen)
+            {
+                isOpenConnect = true;
+                isOK = true;
             }
+
             return isOK;
         }
 

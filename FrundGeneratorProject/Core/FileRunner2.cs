@@ -70,13 +70,11 @@ namespace FrundGeneratorProject.Core
 
         void ExecuteFrame(MoveFrame frame)
         {
-            //_logMaster.addMessage($"FRUND generator: time = {frame.Time}");
+            _logMaster.addMessage($"FRUND generator: time = {frame.Time}");
 
             foreach(var move in frame.Moves)
-            {
-                //_logMaster.addMessage($"FRUND generator: N = {move.ServoNumber}");
                 _robot.setAngle(move.ServoNumber, move.Angle, true);
-            }
+            
         }
     }
 }
