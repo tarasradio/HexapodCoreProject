@@ -42,11 +42,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-<<<<<<< HEAD
     <Compile Include="Core\FileRunner.cs" />
-=======
-    <Compile Include="Core\FileRunner2.cs" />
->>>>>>> 9a36990ce03bcd646b89296007de10e90791ced0
     <Compile Include="Core\FrundMoveFile.cs" />
     <Compile Include="Core\IFileRunner.cs" />
     <Compile Include="Core\Move.cs" />
