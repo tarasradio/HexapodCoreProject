@@ -13,6 +13,5 @@ namespace HexapodGUIProject.Utils
         {
             control.BeginInvoke(new MethodInvoker(d));
         }
-
     }
 }

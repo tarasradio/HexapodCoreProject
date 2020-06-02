@@ -21,7 +21,6 @@ namespace HexapodGUIProject.ViewModels
         private Hexapod _hexapod;
         private LogMaster _logMaster;
 
-        // выбранный привод
         public int SelectedID { get; set; }
 
         public ServousModel(Storage storage, Hexapod hexapod, LogMaster logMaster)
@@ -78,7 +77,6 @@ namespace HexapodGUIProject.ViewModels
                 return;
             SelectedID = ID;
             OnNewSelectID?.Invoke(SelectedID);
-            _logMaster.AddMessage("Выбрана строка" + ID);
         }
         
         public Leg GetLeg(int id)

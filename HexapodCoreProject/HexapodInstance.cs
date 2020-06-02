@@ -62,7 +62,7 @@ namespace HexapodCoreProject
         {
             return _sourceManager;
         }
-        
+		
         public void GoToStart()
         {
             _hexapod.SetAllCoxaAngle(90);

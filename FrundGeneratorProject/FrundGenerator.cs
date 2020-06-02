@@ -18,6 +18,7 @@ namespace FrundGeneratorProject
         };
 
         private  RUN_STATES currentRunState;
+		
         private readonly ILogger _logMaster;
         private readonly IFileRunner _runner;
         private readonly IRobot _hexapod;

@@ -24,7 +24,6 @@ namespace HexapodGUIProject.ViewPresenters
 
         private void OnNewSelectIDHandler(int id)
         {
-            // вызываем здесь обновление данных из модели во вью
             _view.UpdateFromModel();
         }
 

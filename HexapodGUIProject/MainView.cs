@@ -95,6 +95,7 @@ namespace HexapodGUIProject
                         "Открытие подключения - Подключение к " + portName + " открыто");
                     connectButton.Text = "Отключение";
                     isOpenConnect = true;
+					
                     hexapodInst.GoToStart();
                 }
                 else
@@ -161,6 +162,11 @@ namespace HexapodGUIProject
         private void toolStripButton1_Click(object sender, EventArgs e)
         {
             hexapodInst.GoToStart();
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            hexapodInst.MoveToStart();
         }
     }
 }

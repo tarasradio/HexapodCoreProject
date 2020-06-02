@@ -78,7 +78,6 @@ namespace HexapodCoreProject.Management
 
         private void WriteAngle(int servoNumber, int angle, bool useOffset = true)
         {
-           
             if (!_storage.Settings.Servous.ContainsKey(servoNumber)) return;
             //TODO: добавить учет реверса привода
             int servoChunnel = _storage.Settings.Servous[servoNumber].Channel;

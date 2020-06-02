@@ -128,16 +128,12 @@ namespace GateGeneratorProject.Core
             _timeCounter = 0;
             stepCounter = 1;
             _timer.Start();
-            
-
-            //_logMaster.addMessage("GATE generator: Enable Moves");
         }
 
         public void Terminate()
         {
             _timer.Stop();
             _timer.Close();
-            //_logMaster.addMessage("GATE generator: Stop Moves");
         }
     }
 }

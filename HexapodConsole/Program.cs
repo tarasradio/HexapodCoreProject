@@ -79,6 +79,7 @@ namespace HexapodConsole
         static void ShowPorts()
         {
             List<String> portsNames = new List<string>();
+			
             if (_hexapod.GetSerialPortMaster().getOpenPorts(ref portsNames))
             {
                 Console.WriteLine("Available COM-ports:");

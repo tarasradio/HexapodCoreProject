@@ -29,7 +29,6 @@ namespace HexapodGUIProject.ViewPresenters
 
         private void onNewUpdateModelHandler()
         {
-            // вызываем здесь обновление данных из модели во вью
             _view.UpdateFromModel();
         }
 

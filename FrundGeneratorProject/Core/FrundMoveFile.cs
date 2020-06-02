@@ -65,7 +65,7 @@ namespace FrundGeneratorProject.Core
                         lastTime = time;
                         isFirst = false;
                     }
-                    
+					
                     if(time > lastTime)
                     {
                         currentFrame.Time = lastTime;
@@ -79,7 +79,7 @@ namespace FrundGeneratorProject.Core
                     CountRows++;
                     Duration = time;
                 }
-                
+				
                 currentFrame.Time = lastTime;
                 Frames.Add(currentFrame);
 
