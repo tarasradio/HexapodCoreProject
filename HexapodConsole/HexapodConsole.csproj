@@ -64,15 +64,19 @@
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\FrundGeneratorProject\FrundGeneratorProject.csproj">
-      <Project>{E095684E-F805-47D1-8912-D4B31829B06B}</Project>
+      <Project>{e095684e-f805-47d1-8912-d4b31829b06b}</Project>
       <Name>FrundGeneratorProject</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GateGeneratorProject\GateGeneratorProject.csproj">
+      <Project>{9a9a8dd6-b1da-462e-b865-2206f053f83d}</Project>
+      <Name>GateGeneratorProject</Name>
+    </ProjectReference>
     <ProjectReference Include="..\HexapodCoreProject\HexapodCoreProject.csproj">
-      <Project>{D90869A7-0EF5-4E06-9526-2C9D99E8C36A}</Project>
+      <Project>{d90869a7-0ef5-4e06-9526-2c9d99e8c36a}</Project>
       <Name>HexapodCoreProject</Name>
     </ProjectReference>
     <ProjectReference Include="..\HexapodIntefacesProject\HexapodInterfacesProject.csproj">
-      <Project>{46666A45-5734-4A86-A125-B44843A4C3AA}</Project>
+      <Project>{46666a45-5734-4a86-a125-b44843a4c3aa}</Project>
       <Name>HexapodInterfacesProject</Name>
     </ProjectReference>
   </ItemGroup>

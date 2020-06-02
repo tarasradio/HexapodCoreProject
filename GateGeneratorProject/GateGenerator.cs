@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
+﻿
 using HexapodInterfacesProject;
 
 namespace GateGeneratorProject
@@ -33,13 +28,13 @@ namespace GateGeneratorProject
 
         public void Enable()
         {
-            _logMaster.AddMessage("GATE Genarator - Enable");
+            _logMaster.AddMessage("GATE Generator has been enabled.");
             currentRunState = RUN_STATES.ENABLED;
         }
 
         public void Disable()
         {
-            _logMaster.AddMessage("GATE Genarator - Disable");
+            _logMaster.AddMessage("GATE Generator has been disabled.");
             currentRunState = RUN_STATES.DISABLED;
         }
 
@@ -47,12 +42,12 @@ namespace GateGeneratorProject
         {
             if (currentRunState == RUN_STATES.ENABLED)
             {
-                _logMaster.AddMessage("Start Move Forward");
+                _logMaster.AddMessage("Movement forward launched.");
                 _runner.Run();
             }
             else
             {
-                _logMaster.AddMessage("Запуск невозможен: источник не активен");
+                _logMaster.AddMessage("Starting is not impossible: the source is inactive.");
             }
 
         }
@@ -60,7 +55,7 @@ namespace GateGeneratorProject
         // Остановка движения
         public void stopMove()
         {
-            _logMaster.AddMessage("Stop Move");
+            _logMaster.AddMessage("The movement has been interrupted.");
             _runner.Terminate();
         }
     }
