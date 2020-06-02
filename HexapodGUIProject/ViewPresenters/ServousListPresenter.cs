@@ -18,34 +18,34 @@ namespace HexapodGUIProject.ViewPresenters
         public ServousListPresenter(ServousModel model)
         {
             _model = model;
-            model.onNewUpdateModel += onNewUpdateModelHandler;
-            model.onNewSelectID += Model_onNewSelectID;
+            model.OnNewUpdateModel += onNewUpdateModelHandler;
+            model.OnNewSelectID += Model_onNewSelectID;
         }
 
         private void Model_onNewSelectID(int id)
         {
-            _view.selectId(id);
+            _view.SelectId(id);
         }
 
         private void onNewUpdateModelHandler()
         {
             // вызываем здесь обновление данных из модели во вью
-            _view.updateFromModel();
+            _view.UpdateFromModel();
         }
 
-        public void setView(IView view)
+        public void SetView(IView view)
         {
             _view = (ServousListView)view;
         }
 
         public List<string[]> getItems()
         {
-            return _model.getItems();
+            return _model.GetItems();
         }
 
         public void selectID(int id)
         {
-            _model.selectID(id);
+            _model.SelectID(id);
         }
     }
 }

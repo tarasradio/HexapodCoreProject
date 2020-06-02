@@ -1,26 +1,18 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using HexapodInterfacesProject;
-using HexapodCoreProject;
-using FrundGeneratorProject;
+﻿using FrundGeneratorProject;
 using GateGeneratorProject;
+using HexapodCoreProject;
 using HexapodGUIProject.ViewModels;
 using HexapodGUIProject.ViewPresenters;
-using HexapodGUIProject.Views;
+using HexapodInterfacesProject;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace HexapodGUIProject
 {
     public partial class MainView : Form
     {
-        ILogMaster _logMaster;
+        ILogger _logMaster;
         HexapodInstance hexapodInst;
         FrundGenerator frundGenerator;
         GateGenerator gateGenerator;
@@ -38,18 +30,18 @@ namespace HexapodGUIProject
         public void InitAll()
         {
             hexapodInst = new HexapodInstance("config.json");
-            _logMaster = hexapodInst.getLogMaster();
-            frundGenerator = new FrundGenerator(hexapodInst.getHexapod(), _logMaster);
-            gateGenerator = new GateGenerator(hexapodInst.getHexapod(), _logMaster);
+            _logMaster = hexapodInst.GetLogger();
+            frundGenerator = new FrundGenerator(hexapodInst.GetHexapod(), _logMaster);
+            gateGenerator = new GateGenerator(hexapodInst.GetHexapod(), _logMaster);
 
-            hexapodInst.addMoveSource(frundGenerator);
-            hexapodInst.addMoveSource(gateGenerator);
+            hexapodInst.AddMoveSource(frundGenerator);
+            hexapodInst.AddMoveSource(gateGenerator);
 
-            frundGeneratorView.addGenerator(frundGenerator);
+            frundGeneratorView.AddGenerator(frundGenerator);
             gateGeneratorView.addGenerator(gateGenerator);
 
-            hexapodInst.getLogMaster().onNewMessageAdded 
-                += logView.addMessage;
+            hexapodInst.GetLogger().OnNewMessageAdded 
+                += logView.AddMessage;
 
             connectionState.Text = "Ожидание соединения";
 
@@ -57,83 +49,84 @@ namespace HexapodGUIProject
 
             _servousModel = 
                 new ServousModel(
-                    hexapodInst.getStorage(),
-                hexapodInst.getHexapod(),
-                hexapodInst.getLogMaster());
+                    hexapodInst.GetStorage(),
+                hexapodInst.GetHexapod(),
+                hexapodInst.GetLogger());
 
             _servousListPresenter = new ServousListPresenter(_servousModel);
             _selectedServoPresenter = new SelectedServousPresenter(_servousModel);
-            servousListView.setPresenter(_servousListPresenter);
-            selectedServoView.setPresenter(_selectedServoPresenter);
+            servousListView.SetPresenter(_servousListPresenter);
+            selectedServoView.SetPresenter(_selectedServoPresenter);
             
-            servousListView.updateFromModel();
+            servousListView.UpdateFromModel();
 
-            structureView.Init(_servousModel, hexapodInst.getStorage());
+            structureView.Init(_servousModel, hexapodInst.GetStorage());
         }
 
         private void updateListPortsButton_Click(object sender, EventArgs e)
         {
-            rescanOpenPorts();
+            RescanOpenPorts();
         }
 
         private void connectButton_Click(object sender, EventArgs e)
         {
             bool isOpenConnect = 
-                hexapodInst.getSerialPortMaster().isConnectOpen();
+                hexapodInst.GetSerialPortMaster().isConnectOpen();
 
             if (isOpenConnect)
             {
-                hexapodInst.getSerialPortMaster().Disconnect();
+                hexapodInst.GetSerialPortMaster().Disconnect();
                 
                 connectButton.Text = "Подключиться";
                 connectionState.Text = "Ожидание соединения";
 
-                rescanOpenPorts();
+                RescanOpenPorts();
             }
             else
             {
                 string portName = portsListBox.SelectedItem.ToString();
 
-                bool isOK = hexapodInst.getSerialPortMaster().Connect(portName);
+                bool isOK = hexapodInst.GetSerialPortMaster().Connect(portName);
 
                 if (isOK)
                 {
                     connectionState.Text = "Установленно соединение с " + portName;
-                    _logMaster.addMessage(
+                    _logMaster.AddMessage(
                         "Открытие подключения - Подключение к " + portName + " открыто");
                     connectButton.Text = "Отключение";
                     isOpenConnect = true;
+                    hexapodInst.GoToStart();
                 }
                 else
                 {
-                    _logMaster.addMessage(
+                    _logMaster.AddMessage(
                         "Открытие подключения - Ошибка при подключении!");
                     connectionState.Text = "Ожидание соединения";
                 }
             }
         }
 
-        public void rescanOpenPorts()
+        public void RescanOpenPorts()
         {
             portsListBox.Items.Clear();
 
-            List<String> portsNames = new List<string>();
+            List<string> portsNames = new List<string>();
 
             bool isOpen = 
-                hexapodInst.getSerialPortMaster().getOpenPorts(ref portsNames);
+                hexapodInst.GetSerialPortMaster().getOpenPorts(ref portsNames);
 
             portsListBox.Items.AddRange(portsNames.ToArray());
 
             if (isOpen == true)
             {
-                _logMaster.addMessage(
+                _logMaster.AddMessage(
                     "Поиск портов - Найдены открытые порты");
                 connectButton.Enabled = true;
                 portsListBox.SelectedIndex = 0;
             }
             else
             {
-                _logMaster.addMessage(
+                _logMaster.AddMessage(
                     "Поиск портов - Открытых портов не найдено");
                 connectButton.Enabled = false;
                 portsListBox.SelectedText = "";
@@ -142,9 +135,9 @@ namespace HexapodGUIProject
 
         private void rescanGenerators()
         {
-            foreach(var source in hexapodInst.getSourceManager().getSources())
+            foreach(var source in hexapodInst.GetSourceManager().getSources())
             {
-                sourcesListBox.Items.Add(source.getName());
+                sourcesListBox.Items.Add(source.Name);
             }
         }
 
@@ -152,17 +145,22 @@ namespace HexapodGUIProject
         {
             if (sourcesListBox.SelectedItem == null) return;
             string sourceName = sourcesListBox.SelectedItem.ToString();
-            hexapodInst.getSourceManager().selectSource(sourceName);
+            hexapodInst.GetSourceManager().SelectSource(sourceName);
         }
 
         private void terminateSelectGenerator_Click(object sender, EventArgs e)
         {
-            hexapodInst.getSourceManager().TerminateSource();
+            hexapodInst.GetSourceManager().TerminateSource();
         }
 
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)
         {
-            hexapodInst.getStorage().SaveFile("config.json");
+            hexapodInst.GetStorage().SaveFile("config.json");
+        }
+
+        private void toolStripButton1_Click(object sender, EventArgs e)
+        {
+            hexapodInst.GoToStart();
         }
     }
 }

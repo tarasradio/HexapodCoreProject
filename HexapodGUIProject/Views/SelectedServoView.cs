@@ -1,16 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using HexapodCoreProject.Elements;
+﻿using HexapodCoreProject.Elements;
 using HexapodGUIProject.ViewPresenters;
 using HexapodInterfacesProject;
+using System;
+using System.Windows.Forms;
 
 namespace HexapodGUIProject.Views
 {
@@ -27,10 +19,10 @@ namespace HexapodGUIProject.Views
             selectState(States.SHOW);
         }
 
-        public void setPresenter(IPresenter presenter)
+        public void SetPresenter(IPresenter presenter)
         {
             _presenter = (SelectedServousPresenter)presenter;
-            _presenter.setView(this);
+            _presenter.SetView(this);
         }
 
         private void selectState(States newState)
@@ -41,7 +33,7 @@ namespace HexapodGUIProject.Views
                 case States.SHOW:
                     {
                         buttonSetOffset.Enabled = false;
-                        checkBoxReverce.Enabled = false;
+                        checkBoxInversion.Enabled = false;
                         checkBoxTrace.Enabled = true;
                         checkBoxCalibration.Enabled = true;
                         checkBoxCalibration.Checked = false;
@@ -51,23 +43,23 @@ namespace HexapodGUIProject.Views
                 case States.CALIBRATION:
                     {
                         buttonSetOffset.Enabled = true;
-                        checkBoxReverce.Enabled = true;
+                        checkBoxInversion.Enabled = true;
                         checkBoxTrace.Enabled = false;
                     }
                     break;
                 case States.TRACE:
                     {
                         buttonSetOffset.Enabled = false;
-                        checkBoxReverce.Enabled = false;
+                        checkBoxInversion.Enabled = false;
                         checkBoxCalibration.Enabled = false;
                     }
                     break;
             }
         }
 
-        public void updateFromModel()
+        public void UpdateFromModel()
         {
-            Servo item = _presenter.getItem();
+            Servo item = _presenter.GetItem();
             UpdateView(item);
         }
 
@@ -85,7 +77,7 @@ namespace HexapodGUIProject.Views
             trackAngle.Minimum = item.minAngle;
             trackAngle.Maximum = item.maxAngle;
 
-            checkBoxReverce.Checked = item.isReverce;
+            checkBoxInversion.Checked = item.isInverce;
 
             if (_state != States.TRACE)
             {
@@ -105,22 +97,22 @@ namespace HexapodGUIProject.Views
         private void buttonEditLimits_Click(object sender, EventArgs e)
         {
             EditLimitsDialogView dialog = new EditLimitsDialogView();
-                dialog.setInitValues(
-                    _presenter.getItem().minAngle,
-                    _presenter.getItem().maxAngle);
+                dialog.SetInitValues(
+                    _presenter.GetItem().minAngle,
+                    _presenter.GetItem().maxAngle);
 
             dialog.StartPosition = FormStartPosition.CenterParent;
             if (dialog.ShowDialog() == DialogResult.OK)
             {
-                _presenter.setMinAngle(dialog.getLeftValue());
-                _presenter.setMaxAngle(dialog.getRightValue());
+                _presenter.SetMinAngle(dialog.GetLowerLimit());
+                _presenter.SetMaxAngle(dialog.GetUpperLimit());
             }
         }
 
         private void buttonSetOffset_Click(object sender, EventArgs e)
         {
             int offset = trackAngle.Value - 90;
-            _presenter.setOffset(offset);
+            _presenter.SetOffset(offset);
         }
 
         private void checkBoxTrace_CheckedChanged(object sender, EventArgs e)
@@ -141,7 +133,7 @@ namespace HexapodGUIProject.Views
 
         private void checkBoxReverce_CheckedChanged(object sender, EventArgs e)
         {
-            _presenter.setReverce(checkBoxReverce.Checked);
+            _presenter.SetInversion(checkBoxInversion.Checked);
         }
 
 
@@ -155,12 +147,12 @@ namespace HexapodGUIProject.Views
 
             if (_state == States.CALIBRATION)
             {
-                _presenter.setAngleWithoutOffset(angle);
+                _presenter.SetAngleWithoutOffset(angle);
             }
 
             if (_state == States.TRACE)
             {
-                _presenter.setAngle(angle);
+                _presenter.SetAngle(angle);
             }
         }
     }

@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HexapodCoreProject.Interfaces
+﻿namespace HexapodCoreProject.Interfaces
 {
     public interface IPacketMaster
     {
-        void servoSetAngle(int Number, int Angle);
+        void ServoSetAngle(int number, int angle);
     }
 }

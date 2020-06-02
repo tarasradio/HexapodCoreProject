@@ -1,13 +1,7 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using HexapodInterfacesProject;
-using HexapodCoreProject.Interfaces;
+﻿
 using HexapodCoreProject.Management;
 using HexapodCoreProject.Masters;
+using HexapodInterfacesProject;
 
 namespace HexapodCoreProject
 {
@@ -16,7 +10,7 @@ namespace HexapodCoreProject
         private Storage _storage;
         private Hexapod _hexapod;
         private SourceManager _sourceManager;
-        private LogMaster _logMaster;
+        private LogMaster _logger;
         private PacketMaster _packetMaster;
         private SerialPortMaster _serialPortmaster;
 
@@ -28,46 +22,52 @@ namespace HexapodCoreProject
         public void CreateInstances(string fileName)
         {
             _storage = new Storage();
-            //_storage.SaveFile(fileName);
             _storage.OpenFile(fileName);
 
-            _logMaster = new LogMaster();
-            _serialPortmaster = new SerialPortMaster(_logMaster);
+            _logger = new LogMaster();
+            _serialPortmaster = new SerialPortMaster(_logger);
             _packetMaster = new PacketMaster(_serialPortmaster);
             _sourceManager = new SourceManager();
-            _hexapod = new Hexapod(_storage, _packetMaster, _logMaster);
+            _hexapod = new Hexapod(_storage, _packetMaster, _logger);
 
-            _logMaster.addMessage("Запись работы системы начата");
+            _logger.AddMessage("Запись работы системы начата");
         }
 
-        public void addMoveSource(IMoveSource moveSource)
+        public void AddMoveSource(IMoveSource moveSource)
         {
-            _sourceManager.addMoveSource(moveSource);
+            _sourceManager.AddMovementSource(moveSource);
         }
 
-        public LogMaster getLogMaster()
+        public LogMaster GetLogger()
         {
-            return _logMaster;
+            return _logger;
         }
 
-        public SerialPortMaster getSerialPortMaster()
+        public SerialPortMaster GetSerialPortMaster()
         {
             return _serialPortmaster;
         }
 
-        public Storage getStorage()
+        public Storage GetStorage()
         {
             return _storage;
         }
 
-        public Hexapod getHexapod()
+        public Hexapod GetHexapod()
         {
             return _hexapod;
         }
 
-        public SourceManager getSourceManager()
+        public SourceManager GetSourceManager()
         {
             return _sourceManager;
+        }
+        
+        public void GoToStart()
+        {
+            _hexapod.SetAllCoxaAngle(90);
+            _hexapod.SetAllFemurAngle(90);
+            _hexapod.SetAllTibiaAngle(90);
         }
     }
 }

@@ -1,76 +1,90 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FrundGeneratorProject.Core
 {
     public class FrundMoveFile
     {
-        public string _path; // путь к файлу
-        public string Name; // название файла (из пути)
-        public string Title; // Псевдоним файла
+        public string Name { get; private set; }
+        public string Title { get; private set; }
+        public int Duration { get; private set; }
+        public int CountRows { get; private set; }
 
-        public List<Move> Moves { get; set; }
-        public ulong Duration { get; set; }
-        public int CountRows { get; set; }
 
+        public List<MoveFrame> Frames { get; private set; }
 
         public FrundMoveFile(string path)
         {
-            _path = path;
-            Moves = new List<Move>();
-            openFile(path);
+            Frames = new List<MoveFrame>();
+            OpenFile(path);
             Name = System.IO.Path.GetFileNameWithoutExtension(path);
             Title = "Файл движений";
         }
 
-        public bool openFile(string fileName)
+        private bool OpenFile(string fileName)
         {
             string[] lines = null;
             lines = System.IO.File.ReadAllLines(fileName);
 
             try
             {
-                if (lines != null)
-                {
-                    Moves.Clear();
-                    CountRows = 0;
-                    Move nextMove;
 
-                    foreach (string line in lines)
-                    {
-                        int pos = 0; string temp = "";
-
-                        pos = StringOperation.SkipWhiteSpaces(line, pos);
-                        pos = StringOperation.ReadValue(line, ref temp, pos);
-                        int Number = int.Parse(temp);
-
-                        pos = StringOperation.SkipWhiteSpaces(line, pos);
-                        pos = StringOperation.ReadValue(line, ref temp, pos);
-                        ulong Time = ulong.Parse(temp.Replace(".", ""));
-                        
-                        pos = StringOperation.SkipWhiteSpaces(line, pos);
-                        pos = StringOperation.ReadValue(line, ref temp, pos);
-                        double Angle = double.Parse(temp.Replace('.', ','));
-
-                        //Переводим угол в градусы
-                        Angle = (180.0 / Math.PI) * Angle;
-                        
-                        Angle *= -1;
-                        Angle += 90;
-                        
-                        nextMove = new Move(Time, Number, (int)Angle);
-                        Moves.Add((Move)nextMove.Clone());
-
-                        CountRows++;
-                        Duration = Time;
-                    }
-                    return true;
-                }
-                else
+                if (lines.Length == 0)
                     return false;
+
+                Frames.Clear();
+                CountRows = 0;
+
+                MoveFrame currentFrame = new MoveFrame();
+                int lastTime = 0;
+                bool isFirst = true;
+
+                foreach (string line in lines)
+                {
+                    int pos = 0; string temp = "";
+
+                    pos = StringOperation.SkipWhiteSpaces(line, pos);
+                    pos = StringOperation.ReadValue(line, ref temp, pos);
+                    int number = int.Parse(temp);
+
+                    pos = StringOperation.SkipWhiteSpaces(line, pos);
+                    pos = StringOperation.ReadValue(line, ref temp, pos);
+                    int time = int.Parse(temp.Replace(".", ""));
+
+                    pos = StringOperation.SkipWhiteSpaces(line, pos);
+                    pos = StringOperation.ReadValue(line, ref temp, pos);
+                    double angle = double.Parse(temp.Replace('.', ','));
+                    
+                    angle = (180.0 / Math.PI) * angle;
+
+                    angle *= -1;
+                    angle += 90;
+                    
+                    if(isFirst)
+                    {
+                        lastTime = time;
+                        isFirst = false;
+                    }
+                    
+                    if(time > lastTime)
+                    {
+                        currentFrame.Time = lastTime;
+                        Frames.Add(currentFrame);
+                        currentFrame = new MoveFrame();
+                    }
+
+                    currentFrame.AddMove(number, (int)angle);
+                    lastTime = time;
+
+                    CountRows++;
+                    Duration = time;
+                }
+                
+                currentFrame.Time = lastTime;
+                Frames.Add(currentFrame);
+
+                return true;
+
             }
             catch
             {

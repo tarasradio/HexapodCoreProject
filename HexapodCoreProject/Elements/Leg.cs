@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HexapodCoreProject.Elements
+﻿namespace HexapodCoreProject.Elements
 {
     /// <summary>
     /// Описывает ногу робота (несколько сервоприводов и поведение)

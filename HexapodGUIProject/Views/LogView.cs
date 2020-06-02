@@ -1,13 +1,5 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿using HexapodGUIProject.Utils;
 using System.Windows.Forms;
-using HexapodGUIProject.Utils;
 
 namespace HexapodGUIProject.Views
 {
@@ -18,7 +10,7 @@ namespace HexapodGUIProject.Views
             InitializeComponent();
         }
 
-        public void addMessage(string message)
+        public void AddMessage(string message)
         {
             this.InvokeThread(()=>{
                 logTextBox.AppendText(message);

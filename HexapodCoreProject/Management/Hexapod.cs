@@ -1,13 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using HexapodInterfacesProject;
-using HexapodCoreProject.Masters;
-using HexapodCoreProject.Elements;
+﻿using HexapodCoreProject.Elements;
 using HexapodCoreProject.Interfaces;
+using HexapodCoreProject.Masters;
+using HexapodInterfacesProject;
+using System.Collections.Generic;
 
 namespace HexapodCoreProject.Management
 {
@@ -31,75 +26,83 @@ namespace HexapodCoreProject.Management
 
         public void initFromStorage()
         {
-            legs = _storage.settings.Legs;
+            legs = _storage.Settings.Legs;
         }
          
-        public void setAngle(int servoNumber, int angle, bool useOffset = true)
+        public void SetAngle(int servoNumber, int angle, bool useOffset = true)
         {
             WriteAngle(servoNumber, angle, useOffset);
         }
 
-        public void setTibiaAngle(int legID, int angle)
+        public void SetTibiaAngle(int legID, int angle)
         {
             int servoNumber = legs[legID].tibiaID;
             WriteAngle(servoNumber, angle);
         }
 
-        public void setFemurAngle(int legID, int angle)
+        public void SetFemurAngle(int legID, int angle)
         {
             int servoNumber = legs[legID].femurID;
             WriteAngle(servoNumber, angle);
         }
 
-        public void setCoxaAngle(int legID, int angle)
+        public void SetCoxaAngle(int legID, int angle)
         {
             int servoNumber = legs[legID].coxaID;
             WriteAngle(servoNumber, angle);
         }
 
-        public void setAllTibiaAngle(int angle)
+        public void SetAllTibiaAngle(int angle)
         {
             foreach (var leg in legs)
             {
-                setTibiaAngle(leg.Key, angle);
+                SetTibiaAngle(leg.Key, angle);
             }
         }
 
-        public void setAllFemurAngle(int angle)
+        public void SetAllFemurAngle(int angle)
         {
             foreach (var leg in legs)
             {
-                setFemurAngle(leg.Key, angle);
+                SetFemurAngle(leg.Key, angle);
             }
         }
 
-        public void setAllCoxaAngle(int angle)
+        public void SetAllCoxaAngle(int angle)
         {
             foreach (var leg in legs)
             {
-                setCoxaAngle(leg.Key, angle);
+                SetCoxaAngle(leg.Key, angle);
             }
         }
 
         private void WriteAngle(int servoNumber, int angle, bool useOffset = true)
         {
-
-            if (!_storage.settings.Servous.ContainsKey(servoNumber)) return;
+           
+            if (!_storage.Settings.Servous.ContainsKey(servoNumber)) return;
             //TODO: добавить учет реверса привода
-            int servoChunnel = _storage.settings.Servous[servoNumber].Channel;
-
-            if (_storage.settings.Servous[servoNumber].isReverce)
-                angle = 180 - angle;
+            int servoChunnel = _storage.Settings.Servous[servoNumber].Channel;
 
             if(useOffset)
             {
-                if (angle < _storage.settings.Servous[servoNumber].minAngle)
-                angle = _storage.settings.Servous[servoNumber].minAngle;
-                if (angle > _storage.settings.Servous[servoNumber].maxAngle)
-                angle = _storage.settings.Servous[servoNumber].maxAngle;
-                angle += _storage.settings.Servous[servoNumber].Offset;
+                if (angle < _storage.Settings.Servous[servoNumber].minAngle)
+                    angle = _storage.Settings.Servous[servoNumber].minAngle;
+                if (angle > _storage.Settings.Servous[servoNumber].maxAngle)
+                    angle = _storage.Settings.Servous[servoNumber].maxAngle;
+
+                angle += _storage.Settings.Servous[servoNumber].Offset;
+                if (angle < 0)
+                    angle = 0;
+
+                if (angle > 180)
+                    angle = 180;
             }
-            _packetMaster.servoSetAngle(servoChunnel, angle);
+
+            if (_storage.Settings.Servous[servoNumber].isInverce)
+                angle = 180 - angle;
+            
+
+            _packetMaster.ServoSetAngle(servoChunnel, angle);
         }
     }
 }

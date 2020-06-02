@@ -44,15 +44,16 @@
             this.connectionState = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
-            this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
             this.servousListView = new HexapodGUIProject.Views.ServousListView();
-            this.gateGeneratorView = new GateGeneratorProject.Views.GateGeneratorView();
-            this.frundGeneratorView = new FrundGeneratorProject.Views.FrundGeneratorView();
-            this.logView = new HexapodGUIProject.Views.LogView();
+            this.tabPage2 = new System.Windows.Forms.TabPage();
             this.structureView = new HexapodGUIProject.Views.StructureView();
+            this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.gateGeneratorView = new GateGeneratorProject.Views.GateGeneratorView();
+            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.frundGeneratorView = new FrundGeneratorProject.Views.FrundGeneratorView();
+            this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
+            this.logView = new HexapodGUIProject.Views.LogView();
+            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -75,7 +76,8 @@
             this.sourcesListBox,
             this.selectGeneratorButton,
             this.terminateSelectGenerator,
-            this.toolStripSeparator2});
+            this.toolStripSeparator2,
+            this.toolStripButton1});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -198,49 +200,6 @@
             this.tabPage1.Text = "Таблица приводов";
             this.tabPage1.UseVisualStyleBackColor = true;
             // 
-            // tabPage2
-            // 
-            this.tabPage2.Controls.Add(this.structureView);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(546, 225);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Управление структурой";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.gateGeneratorView);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(546, 225);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Управление походкой";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.frundGeneratorView);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(546, 225);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Управление из ФРУНД";
-            this.tabPage4.UseVisualStyleBackColor = true;
-            // 
-            // selectedServoView
-            // 
-            this.selectedServoView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.selectedServoView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.selectedServoView.Location = new System.Drawing.Point(572, 42);
-            this.selectedServoView.Name = "selectedServoView";
-            this.selectedServoView.Size = new System.Drawing.Size(210, 388);
-            this.selectedServoView.TabIndex = 8;
-            // 
             // servousListView
             // 
             this.servousListView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
@@ -251,36 +210,16 @@
             this.servousListView.Size = new System.Drawing.Size(534, 213);
             this.servousListView.TabIndex = 6;
             // 
-            // gateGeneratorView
+            // tabPage2
             // 
-            this.gateGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.gateGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gateGeneratorView.Location = new System.Drawing.Point(6, 6);
-            this.gateGeneratorView.Name = "gateGeneratorView";
-            this.gateGeneratorView.Size = new System.Drawing.Size(534, 213);
-            this.gateGeneratorView.TabIndex = 1;
-            // 
-            // frundGeneratorView
-            // 
-            this.frundGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.frundGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.frundGeneratorView.Location = new System.Drawing.Point(6, 6);
-            this.frundGeneratorView.Name = "frundGeneratorView";
-            this.frundGeneratorView.Size = new System.Drawing.Size(534, 213);
-            this.frundGeneratorView.TabIndex = 0;
-            // 
-            // logView
-            // 
-            this.logView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.logView.Location = new System.Drawing.Point(12, 299);
-            this.logView.Name = "logView";
-            this.logView.Size = new System.Drawing.Size(554, 131);
-            this.logView.TabIndex = 3;
+            this.tabPage2.Controls.Add(this.structureView);
+            this.tabPage2.Location = new System.Drawing.Point(4, 22);
+            this.tabPage2.Name = "tabPage2";
+            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage2.Size = new System.Drawing.Size(546, 225);
+            this.tabPage2.TabIndex = 1;
+            this.tabPage2.Text = "Управление структурой";
+            this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // structureView
             // 
@@ -293,6 +232,79 @@
             this.structureView.Name = "structureView";
             this.structureView.Size = new System.Drawing.Size(534, 213);
             this.structureView.TabIndex = 0;
+            // 
+            // tabPage3
+            // 
+            this.tabPage3.Controls.Add(this.gateGeneratorView);
+            this.tabPage3.Location = new System.Drawing.Point(4, 22);
+            this.tabPage3.Name = "tabPage3";
+            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage3.Size = new System.Drawing.Size(546, 225);
+            this.tabPage3.TabIndex = 2;
+            this.tabPage3.Text = "Управление походкой";
+            this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // gateGeneratorView
+            // 
+            this.gateGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.gateGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.gateGeneratorView.Location = new System.Drawing.Point(6, 6);
+            this.gateGeneratorView.Name = "gateGeneratorView";
+            this.gateGeneratorView.Size = new System.Drawing.Size(534, 213);
+            this.gateGeneratorView.TabIndex = 1;
+            // 
+            // tabPage4
+            // 
+            this.tabPage4.Controls.Add(this.frundGeneratorView);
+            this.tabPage4.Location = new System.Drawing.Point(4, 22);
+            this.tabPage4.Name = "tabPage4";
+            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage4.Size = new System.Drawing.Size(546, 225);
+            this.tabPage4.TabIndex = 3;
+            this.tabPage4.Text = "Управление из ФРУНД";
+            this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // frundGeneratorView
+            // 
+            this.frundGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.frundGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.frundGeneratorView.Location = new System.Drawing.Point(6, 6);
+            this.frundGeneratorView.Name = "frundGeneratorView";
+            this.frundGeneratorView.Size = new System.Drawing.Size(534, 213);
+            this.frundGeneratorView.TabIndex = 0;
+            // 
+            // selectedServoView
+            // 
+            this.selectedServoView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.selectedServoView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.selectedServoView.Location = new System.Drawing.Point(572, 42);
+            this.selectedServoView.Name = "selectedServoView";
+            this.selectedServoView.Size = new System.Drawing.Size(210, 388);
+            this.selectedServoView.TabIndex = 8;
+            // 
+            // logView
+            // 
+            this.logView.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Bottom | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.logView.Location = new System.Drawing.Point(12, 299);
+            this.logView.Name = "logView";
+            this.logView.Size = new System.Drawing.Size(554, 131);
+            this.logView.TabIndex = 3;
+            // 
+            // toolStripButton1
+            // 
+            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
+            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.toolStripButton1.Name = "toolStripButton1";
+            this.toolStripButton1.Size = new System.Drawing.Size(76, 36);
+            this.toolStripButton1.Text = "В стартовое";
+            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
             // 
             // MainView
             // 
@@ -347,6 +359,7 @@
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton terminateSelectGenerator;
         private Views.StructureView structureView;
+        private System.Windows.Forms.ToolStripButton toolStripButton1;
     }
 }
 

@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using HexapodCoreProject.Management;
+﻿using HexapodCoreProject.Management;
 using HexapodGUIProject.ViewModels;
+using System;
+using System.Drawing;
+using System.Windows.Forms;
 
 namespace HexapodGUIProject.Views
 {
@@ -17,31 +10,33 @@ namespace HexapodGUIProject.Views
     {
         ServousModel _model;
 
-        public int servoID = 1;
-        public Storage _storage;
+        public int ServoID = 1;
+        private Storage _storage;
 
         public OneServoView()
         {
             InitializeComponent();
         }
 
-        public void setData(ServousModel model, Storage storage)
+        public void SetData(ServousModel model, Storage storage)
         {
             _model = model;
             _storage = storage;
-            updateFromStorage();
-            _model.onNewSelectID += _model_onNewSelectID;
-            _model.onNewUpdateModel += _model_onNewUpdateModel;
+
+            UpdateFromStorage();
+
+            _model.OnNewSelectID += _model_onNewSelectID;
+            _model.OnNewUpdateModel += _model_onNewUpdateModel;
         }
 
         private void _model_onNewUpdateModel()
         {
-            updateFromStorage();
+            UpdateFromStorage();
         }
 
         private void _model_onNewSelectID(int id)
         {
-            if (id == servoID)
+            if (id == ServoID)
             {
                 labelSelect.BackColor = Color.FromName("GradientInactiveCaption");
             }
@@ -51,25 +46,29 @@ namespace HexapodGUIProject.Views
             }
         }
 
-        public void updateFromStorage()
+        public void UpdateFromStorage()
         {
             if (_storage == null) return;
+
             string label = "";
-            label += _storage.settings.Servous[servoID].Number.ToString();
-            label += "(" + _storage.settings.Servous[servoID].Channel.ToString() + ")";
-            if(_storage.settings.Servous[servoID].isReverce)
+
+            label += _storage.Settings.Servous[ServoID].Number.ToString();
+            label += "(" + _storage.Settings.Servous[ServoID].Channel.ToString() + ")";
+
+            if(_storage.Settings.Servous[ServoID].isInverce)
             {
-                label += "Реверс";
+                label += "Инверсия";
             }
+
             labelSelect.Text = label;
 
-            minAngleLabel.Text = _storage.settings.Servous[servoID].minAngle.ToString();
-            maxAngleLabel.Text = _storage.settings.Servous[servoID].maxAngle.ToString();
+            minAngleLabel.Text = _storage.Settings.Servous[ServoID].minAngle.ToString();
+            maxAngleLabel.Text = _storage.Settings.Servous[ServoID].maxAngle.ToString();
         }
 
         private void labelSelect_Click(object sender, EventArgs e)
         {
-            _model.selectID(servoID);
+            _model.SelectID(ServoID);
         }
     }
 }

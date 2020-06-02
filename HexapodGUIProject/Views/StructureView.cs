@@ -27,26 +27,26 @@ namespace HexapodGUIProject.Views
 
         public void Init(ServousModel model, Storage storage)
         {
-            oneServoTibia1.servoID = model.getLeg(1).tibiaID; oneServoTibia1.setData(model, storage);
-            oneServoTibia2.servoID = model.getLeg(2).tibiaID; oneServoTibia2.setData(model, storage);
-            oneServoTibia3.servoID = model.getLeg(3).tibiaID; oneServoTibia3.setData(model, storage);
-            oneServoTibia4.servoID = model.getLeg(4).tibiaID; oneServoTibia4.setData(model, storage);
-            oneServoTibia5.servoID = model.getLeg(5).tibiaID; oneServoTibia5.setData(model, storage);
-            oneServoTibia6.servoID = model.getLeg(6).tibiaID; oneServoTibia6.setData(model, storage);
+            oneServoTibia1.ServoID = model.GetLeg(1).tibiaID; oneServoTibia1.SetData(model, storage);
+            oneServoTibia2.ServoID = model.GetLeg(2).tibiaID; oneServoTibia2.SetData(model, storage);
+            oneServoTibia3.ServoID = model.GetLeg(3).tibiaID; oneServoTibia3.SetData(model, storage);
+            oneServoTibia4.ServoID = model.GetLeg(4).tibiaID; oneServoTibia4.SetData(model, storage);
+            oneServoTibia5.ServoID = model.GetLeg(5).tibiaID; oneServoTibia5.SetData(model, storage);
+            oneServoTibia6.ServoID = model.GetLeg(6).tibiaID; oneServoTibia6.SetData(model, storage);
 
-            oneServoFemur1.servoID = model.getLeg(1).femurID; oneServoFemur1.setData(model, storage);
-            oneServoFemur2.servoID = model.getLeg(2).femurID; oneServoFemur2.setData(model, storage);
-            oneServoFemur3.servoID = model.getLeg(3).femurID; oneServoFemur3.setData(model, storage);
-            oneServoFemur4.servoID = model.getLeg(4).femurID; oneServoFemur4.setData(model, storage);
-            oneServoFemur5.servoID = model.getLeg(5).femurID; oneServoFemur5.setData(model, storage);
-            oneServoFemur6.servoID = model.getLeg(6).femurID; oneServoFemur6.setData(model, storage);
+            oneServoFemur1.ServoID = model.GetLeg(1).femurID; oneServoFemur1.SetData(model, storage);
+            oneServoFemur2.ServoID = model.GetLeg(2).femurID; oneServoFemur2.SetData(model, storage);
+            oneServoFemur3.ServoID = model.GetLeg(3).femurID; oneServoFemur3.SetData(model, storage);
+            oneServoFemur4.ServoID = model.GetLeg(4).femurID; oneServoFemur4.SetData(model, storage);
+            oneServoFemur5.ServoID = model.GetLeg(5).femurID; oneServoFemur5.SetData(model, storage);
+            oneServoFemur6.ServoID = model.GetLeg(6).femurID; oneServoFemur6.SetData(model, storage);
 
-            oneServoCoxa1.servoID = model.getLeg(1).coxaID; oneServoCoxa1.setData(model, storage);
-            oneServoCoxa2.servoID = model.getLeg(2).coxaID; oneServoCoxa2.setData(model, storage);
-            oneServoCoxa3.servoID = model.getLeg(3).coxaID; oneServoCoxa3.setData(model, storage);
-            oneServoCoxa4.servoID = model.getLeg(4).coxaID; oneServoCoxa4.setData(model, storage);
-            oneServoCoxa5.servoID = model.getLeg(5).coxaID; oneServoCoxa5.setData(model, storage);
-            oneServoCoxa6.servoID = model.getLeg(6).coxaID; oneServoCoxa6.setData(model, storage);
+            oneServoCoxa1.ServoID = model.GetLeg(1).coxaID; oneServoCoxa1.SetData(model, storage);
+            oneServoCoxa2.ServoID = model.GetLeg(2).coxaID; oneServoCoxa2.SetData(model, storage);
+            oneServoCoxa3.ServoID = model.GetLeg(3).coxaID; oneServoCoxa3.SetData(model, storage);
+            oneServoCoxa4.ServoID = model.GetLeg(4).coxaID; oneServoCoxa4.SetData(model, storage);
+            oneServoCoxa5.ServoID = model.GetLeg(5).coxaID; oneServoCoxa5.SetData(model, storage);
+            oneServoCoxa6.ServoID = model.GetLeg(6).coxaID; oneServoCoxa6.SetData(model, storage);
         }
     }
 }

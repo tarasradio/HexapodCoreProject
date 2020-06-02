@@ -32,14 +32,14 @@
             this.buttonOK = new System.Windows.Forms.Button();
             this.label4 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.editRightValue = new System.Windows.Forms.NumericUpDown();
-            this.editLeftValue = new System.Windows.Forms.NumericUpDown();
-            this.rightLimit = new System.Windows.Forms.TextBox();
+            this.editUpperLimitValue = new System.Windows.Forms.NumericUpDown();
+            this.editLowerLimitValue = new System.Windows.Forms.NumericUpDown();
+            this.upperLimitValue = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.leftLimit = new System.Windows.Forms.TextBox();
+            this.lowerLimitValue = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
-            ((System.ComponentModel.ISupportInitialize)(this.editRightValue)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editLeftValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editUpperLimitValue)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editLowerLimitValue)).BeginInit();
             this.SuspendLayout();
             // 
             // buttonCancel
@@ -82,22 +82,22 @@
             // 
             // editRightValue
             // 
-            this.editRightValue.Increment = new decimal(new int[] {
+            this.editUpperLimitValue.Increment = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.editRightValue.Location = new System.Drawing.Point(182, 48);
-            this.editRightValue.Maximum = new decimal(new int[] {
+            this.editUpperLimitValue.Location = new System.Drawing.Point(182, 48);
+            this.editUpperLimitValue.Maximum = new decimal(new int[] {
             180,
             0,
             0,
             0});
-            this.editRightValue.Name = "editRightValue";
-            this.editRightValue.Size = new System.Drawing.Size(74, 20);
-            this.editRightValue.TabIndex = 15;
-            this.editRightValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.editRightValue.Value = new decimal(new int[] {
+            this.editUpperLimitValue.Name = "editRightValue";
+            this.editUpperLimitValue.Size = new System.Drawing.Size(74, 20);
+            this.editUpperLimitValue.TabIndex = 15;
+            this.editUpperLimitValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.editUpperLimitValue.Value = new decimal(new int[] {
             150,
             0,
             0,
@@ -105,22 +105,22 @@
             // 
             // editLeftValue
             // 
-            this.editLeftValue.Increment = new decimal(new int[] {
+            this.editLowerLimitValue.Increment = new decimal(new int[] {
             5,
             0,
             0,
             0});
-            this.editLeftValue.Location = new System.Drawing.Point(182, 22);
-            this.editLeftValue.Maximum = new decimal(new int[] {
+            this.editLowerLimitValue.Location = new System.Drawing.Point(182, 22);
+            this.editLowerLimitValue.Maximum = new decimal(new int[] {
             180,
             0,
             0,
             0});
-            this.editLeftValue.Name = "editLeftValue";
-            this.editLeftValue.Size = new System.Drawing.Size(74, 20);
-            this.editLeftValue.TabIndex = 14;
-            this.editLeftValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
-            this.editLeftValue.Value = new decimal(new int[] {
+            this.editLowerLimitValue.Name = "editLeftValue";
+            this.editLowerLimitValue.Size = new System.Drawing.Size(74, 20);
+            this.editLowerLimitValue.TabIndex = 14;
+            this.editLowerLimitValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.editLowerLimitValue.Value = new decimal(new int[] {
             30,
             0,
             0,
@@ -128,12 +128,12 @@
             // 
             // rightLimit
             // 
-            this.rightLimit.Location = new System.Drawing.Point(102, 48);
-            this.rightLimit.Name = "rightLimit";
-            this.rightLimit.Size = new System.Drawing.Size(74, 20);
-            this.rightLimit.TabIndex = 13;
-            this.rightLimit.Text = "160";
-            this.rightLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.upperLimitValue.Location = new System.Drawing.Point(102, 48);
+            this.upperLimitValue.Name = "rightLimit";
+            this.upperLimitValue.Size = new System.Drawing.Size(74, 20);
+            this.upperLimitValue.TabIndex = 13;
+            this.upperLimitValue.Text = "160";
+            this.upperLimitValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label2
             // 
@@ -146,12 +146,12 @@
             // 
             // leftLimit
             // 
-            this.leftLimit.Location = new System.Drawing.Point(102, 22);
-            this.leftLimit.Name = "leftLimit";
-            this.leftLimit.Size = new System.Drawing.Size(74, 20);
-            this.leftLimit.TabIndex = 11;
-            this.leftLimit.Text = "20";
-            this.leftLimit.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
+            this.lowerLimitValue.Location = new System.Drawing.Point(102, 22);
+            this.lowerLimitValue.Name = "leftLimit";
+            this.lowerLimitValue.Size = new System.Drawing.Size(74, 20);
+            this.lowerLimitValue.TabIndex = 11;
+            this.lowerLimitValue.Text = "20";
+            this.lowerLimitValue.TextAlign = System.Windows.Forms.HorizontalAlignment.Center;
             // 
             // label1
             // 
@@ -171,16 +171,16 @@
             this.Controls.Add(this.buttonOK);
             this.Controls.Add(this.label4);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.editRightValue);
-            this.Controls.Add(this.editLeftValue);
-            this.Controls.Add(this.rightLimit);
+            this.Controls.Add(this.editUpperLimitValue);
+            this.Controls.Add(this.editLowerLimitValue);
+            this.Controls.Add(this.upperLimitValue);
             this.Controls.Add(this.label2);
-            this.Controls.Add(this.leftLimit);
+            this.Controls.Add(this.lowerLimitValue);
             this.Controls.Add(this.label1);
             this.Name = "EditLimitsDialogView";
             this.Text = "Изменение пределов";
-            ((System.ComponentModel.ISupportInitialize)(this.editRightValue)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.editLeftValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editUpperLimitValue)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.editLowerLimitValue)).EndInit();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -192,11 +192,11 @@
         private System.Windows.Forms.Button buttonOK;
         private System.Windows.Forms.Label label4;
         private System.Windows.Forms.Label label3;
-        private System.Windows.Forms.NumericUpDown editRightValue;
-        private System.Windows.Forms.NumericUpDown editLeftValue;
-        private System.Windows.Forms.TextBox rightLimit;
+        private System.Windows.Forms.NumericUpDown editUpperLimitValue;
+        private System.Windows.Forms.NumericUpDown editLowerLimitValue;
+        private System.Windows.Forms.TextBox upperLimitValue;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.TextBox leftLimit;
+        private System.Windows.Forms.TextBox lowerLimitValue;
         private System.Windows.Forms.Label label1;
     }
 }

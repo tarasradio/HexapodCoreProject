@@ -1,105 +1,76 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-
-using HexapodInterfacesProject;
+﻿using HexapodInterfacesProject;
+using System.Diagnostics;
+using System.Threading;
 
 namespace FrundGeneratorProject.Core
 {
-    /// <summary>
-    /// Непосредственно проигрывает файл с движениями
-    /// </summary>
-    public class FileRunner
+    class FileRunner : IFileRunner
     {
-        FileStorage _storage;
-        ILogMaster _logMaster;
-        IRobot _robot;
+        private readonly ILogger _logMaster;
+        private readonly IRobot _robot;
+        private Thread _runThread;
+        private bool _isRunning;
 
-        System.Timers.Timer _timer;
-
-        static ulong _timeCounter;
-        static uint _timeDelay;
-
-        uint _currentFileID;
-        int _currentMoveID;
-
-        public FileRunner(IRobot robot, FileStorage storage, ILogMaster logMaster)
+        public FileRunner(IRobot robot, ILogger logMaster)
         {
             _robot = robot;
-            _storage = storage;
             _logMaster = logMaster;
-            _timer = new System.Timers.Timer();
-            _timeDelay = 100;
-            _timer.Interval = _timeDelay;
-            _timer.Elapsed += TimerElapsedHandler;
-            _timeCounter = 0;
-            _currentMoveID = 0;
         }
 
-        private void TimerElapsedHandler(object sender, System.Timers.ElapsedEventArgs e)
+        public void Run(FrundMoveFile move)
         {
-            _timeCounter += _timeDelay * 1000;
-            executeMoves(_timeCounter);
-        }
-
-        public void Run(uint fileId)
-        {
-            _currentFileID = fileId;
-            _timeCounter = 0;
-            _currentMoveID = 0;
-            _timer.Start();
-
-            _logMaster.addMessage("FRUND generator: Run Moves");
+            _runThread = new Thread(new ParameterizedThreadStart(Running));
+            
+            _runThread.Start(move);
+            _isRunning = true;
         }
 
         public void Terminate()
         {
-            _timer.Stop();
-            _timer.Close();
-            _logMaster.addMessage("FRUND generator: Stop Moves");
+            _runThread.Join();
+            _isRunning = false;
         }
 
-        /// <summary>
-        /// Выполнение движений для текущего момента времени
-        /// </summary>
-        /// <param name="time">Прошедшее время (мс)</param>
-        private void executeMoves(ulong time)
+        private void Running(object ofile)
         {
-            //Console.WriteLine("FRUND generator: time = " + time.ToString());
-            _logMaster.addMessage("FRUND generator: time = " + time.ToString());
+            var file = (FrundMoveFile)ofile;
+            var watch = Stopwatch.StartNew();
 
-            int servoNumber, Angle;
-
-            if ((_currentMoveID + 2) >= _storage.fileList[_currentFileID].Moves.Count)
+            int i = 0;
+            while (i < file.Frames.Count && _isRunning)
             {
-                Terminate();
-                return;
-            }
-                
-            ulong moveTime = 
-                _storage.fileList[_currentFileID].Moves[_currentMoveID++].Time;
-            while(moveTime < time)
-            {
-                moveTime =
-                _storage.fileList[_currentFileID].Moves[_currentMoveID++].Time;
-            }
-            while(moveTime <= time + _timeDelay*1000)
-            {
-                servoNumber = 
-                    _storage.fileList[_currentFileID].Moves[_currentMoveID].ServoNumber;
-                Angle =
-                    _storage.fileList[_currentFileID].Moves[_currentMoveID].Angle;
+                long currentTime = watch.ElapsedMilliseconds;
 
-                Console.WriteLine("FRUND generator: N = " + servoNumber.ToString());
-                
-                _robot.setAngle(servoNumber, Angle, true);
+                // Пропускаем опоздавшие фреймы
+                int delay = (int)(file.Frames[i].Time / 1000 - currentTime);
 
-                moveTime =
-                _storage.fileList[_currentFileID].Moves[_currentMoveID++].Time;
+                if (delay < 0)
+                {
+                    while ((i < file.Frames.Count) && (file.Frames[i].Time / 1000 < currentTime))
+                        i++;
+
+                    if(i >= file.Frames.Count)
+                        break;
+                }
+                else
+                {
+                    // Ждем, если задержка большая
+                    Thread.Sleep(delay);
+                }
+
+                ExecuteFrame(file.Frames[i]);
             }
+
+            _logMaster.AddMessage("FRUND Generator: Moving has been finished");
+        }
+
+        void ExecuteFrame(MoveFrame frame)
+        {
+            //_logMaster.addMessage($"FRUND generator: time = {frame.Time}");
+
+            foreach(var move in frame.Moves)
+                _robot.SetAngle(move.ServoNumber, move.Angle, true);
+            
         }
     }
 }

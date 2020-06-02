@@ -1,19 +1,14 @@
-﻿using System;
+﻿using HexapodCoreProject.Interfaces;
+using System;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
 using System.IO.Ports;
-
-using HexapodCoreProject.Interfaces;
 
 namespace HexapodCoreProject.Masters
 {
     public class SerialPortMaster : IPortMaster
     {
-        public delegate void newDataReceiveHandler(byte[] data, int lenght);
-        public event newDataReceiveHandler onNewDataReceived;
+        public delegate void NewDataReceiveHandler(byte[] data, int lenght);
+        public event NewDataReceiveHandler OnNewDataReceived;
 
         LogMaster _logMaster;
 
@@ -42,7 +37,7 @@ namespace HexapodCoreProject.Masters
             port.Read(buffer, 0, buffer.Length);
             isReceived = true;
 
-            onNewDataReceived?.Invoke(buffer, buffer.Length);
+            OnNewDataReceived?.Invoke(buffer, buffer.Length);
         }
 
         public bool getOpenPorts(ref List<String> ports)
@@ -50,7 +45,7 @@ namespace HexapodCoreProject.Masters
             List<string> Ports = new List<string>();
             bool available = false;
 
-            foreach (string str in System.IO.Ports.SerialPort.GetPortNames())
+            foreach (string str in SerialPort.GetPortNames())
             {
                 try
                 {
@@ -59,7 +54,7 @@ namespace HexapodCoreProject.Masters
                 }
                 catch (Exception ex)
                 {
-                    _logMaster.addMessage("Ошибка при сканировании!");
+                    _logMaster.AddMessage("Ошибка при сканировании!");
                 }
             }
 
@@ -69,23 +64,21 @@ namespace HexapodCoreProject.Masters
         public bool Connect(string portName)
         {
             bool isOK = false;
-            try
-            {
-                port = new System.IO.Ports.SerialPort(portName);
-                port.BaudRate = 9600;
-                port.DataBits = 8;
-                port.Open();
 
-                if (port.IsOpen)
-                {
-                    isOpenConnect = true;
-                    isOK = true;
-                }
-            }
-            catch (Exception ex)
+            port = new SerialPort(portName)
             {
+                BaudRate = 115200,
+                DataBits = 8
+            };
 
+            port.Open();
+
+            if (port.IsOpen)
+            {
+                isOpenConnect = true;
+                isOK = true;
             }
+
             return isOK;
         }
 
@@ -102,12 +95,10 @@ namespace HexapodCoreProject.Masters
                 port.Write(data, 0, size);
 
                 while (port.BytesToWrite != 0) ;
-
-                System.Threading.Thread.Sleep(5);
             }
             catch (Exception ex)
             {
-                //_logMaster.addMessage("Ошибка при попытке записи в порт");
+                _logMaster.AddMessage("Ошибка при попытке записи в порт");
             }
         }
 
@@ -120,7 +111,7 @@ namespace HexapodCoreProject.Masters
             }
             catch (Exception ex)
             {
-                _logMaster.addMessage("Ошибка при попытке записи в порт");
+                _logMaster.AddMessage("Ошибка при попытке записи в порт");
             }
         }
 

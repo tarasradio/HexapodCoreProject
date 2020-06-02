@@ -1,15 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Drawing;
-using System.Data;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-using HexapodGUIProject.ViewPresenters;
+﻿using HexapodGUIProject.ViewPresenters;
 using HexapodInterfacesProject;
+using System;
+using System.Collections.Generic;
+using System.Windows.Forms;
 
 namespace HexapodGUIProject.Views
 {
@@ -20,13 +13,13 @@ namespace HexapodGUIProject.Views
         
         string[] GridTitles =
         {   "#",
-            "@",
-            "Название",
-            "Угол",
-            "Мин Угол",
-            "Макс угол",
-            "Смещение",
-            "Реверс" };
+            "Packet channel",
+            "Description",
+            "Current position",
+            "Lower limit",
+            "Upper limit",
+            "Offset",
+            "Inversion" };
 
         enum States { UPDATE, SHOW };
         States state = States.SHOW;
@@ -37,13 +30,13 @@ namespace HexapodGUIProject.Views
             initView();
         }
 
-        public void setPresenter (IPresenter presenter)
+        public void SetPresenter (IPresenter presenter)
         {
             _presenter = (ServousListPresenter)presenter;
-            _presenter.setView(this);
+            _presenter.SetView(this);
         }
 
-        public void initView()
+        private void initView()
         {
             //вставляем заголовки
             servousList.ColumnCount = Columns;
@@ -54,7 +47,7 @@ namespace HexapodGUIProject.Views
             servousList.Columns[2].MinimumWidth = 100;
         }
 
-        public void selectId(int id)
+        public void SelectId(int id)
         {
             state = States.UPDATE;
             for (int i = 0; i <servousList.RowCount; i++)
@@ -62,13 +55,12 @@ namespace HexapodGUIProject.Views
                 if(int.Parse(servousList[0, i].Value.ToString()) == id)
                 {
                     servousList.CurrentCell = servousList[0, i];
-                    //servousList[0, i].Selected = true;
                 }
             }
             state = States.SHOW;
         }
 
-        public void updateFromModel()
+        public void UpdateFromModel()
         {
             state = States.UPDATE;
             List<string[]> items = _presenter.getItems();

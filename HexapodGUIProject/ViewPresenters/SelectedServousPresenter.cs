@@ -19,53 +19,53 @@ namespace HexapodGUIProject.ViewPresenters
         public SelectedServousPresenter(ServousModel model)
         {
             _model = model;
-            _model.onNewSelectID += onNewSelectIDHandler;
+            _model.OnNewSelectID += OnNewSelectIDHandler;
         }
 
-        private void onNewSelectIDHandler(int id)
+        private void OnNewSelectIDHandler(int id)
         {
             // вызываем здесь обновление данных из модели во вью
-            _view.updateFromModel();
+            _view.UpdateFromModel();
         }
 
-        public void setView(IView view)
+        public void SetView(IView view)
         {
             _view = (SelectedServoView)view;
         }
 
-        public Servo getItem()
+        public Servo GetItem()
         {
-            return _model.getItem();
+            return _model.GetItem();
         }
 
-        public void setAngle(int angle)
+        public void SetAngle(int angle)
         {
-            _model.setAngle(angle);
+            _model.SetAngle(angle);
         }
 
-        public void setMinAngle(int angle)
+        public void SetMinAngle(int angle)
         {
-            _model.setMinAngle(angle);
+            _model.SetMinAngle(angle);
         }
 
-        public void setMaxAngle(int angle)
+        public void SetMaxAngle(int angle)
         {
-            _model.setMaxAngle(angle);
+            _model.SetMaxAngle(angle);
         }
 
-        public void setAngleWithoutOffset(int angle)
+        public void SetAngleWithoutOffset(int angle)
         {
-            _model.setAngleWithoutOffset(angle);
+            _model.SetAngleWithoutOffset(angle);
         }
 
-        public void setOffset(int offset)
+        public void SetOffset(int offset)
         {
-            _model.setOffset(offset);
+            _model.SetOffset(offset);
         }
 
-        public void setReverce(bool isReverce)
+        public void SetInversion(bool isInverce)
         {
-            _model.setReverce(isReverce);
+            _model.SetInversion(isInverce);
         }
     }
 }

@@ -19,7 +19,7 @@ namespace HexapodCoreProject.Management
             moveSources = new List<IMoveSource>();
         }
 
-        public void addMoveSource(IMoveSource source)
+        public void AddMovementSource(IMoveSource source)
         {
             moveSources.Add(source);
         }
@@ -29,16 +29,16 @@ namespace HexapodCoreProject.Management
             return moveSources;
         }
 
-        public bool selectSource(string sourceName)
+        public bool SelectSource(string sourceName)
         {
             foreach(var source in moveSources)
             {
-                if(source.getName() == sourceName)
+                if(source.Name == sourceName)
                 {
                     if (_selectSource !=null)
-                        _selectSource.Terminate();
+                        _selectSource.Disable();
                     _selectSource = source;
-                    _selectSource.Run();
+                    _selectSource.Enable();
                     return true;
                 }
             }
@@ -48,13 +48,13 @@ namespace HexapodCoreProject.Management
         public void TerminateSource()
         {
             if(_selectSource != null)
-                _selectSource.Terminate();
+                _selectSource.Disable();
         }
 
         public void RunSource()
         {
             if (_selectSource != null)
-                _selectSource.Run();
+                _selectSource.Enable();
         }
     }
 }

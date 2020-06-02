@@ -1,19 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace HexapodInterfacesProject
+﻿namespace HexapodInterfacesProject
 {
     public interface IRobot
     {
-        void setAngle(int servoNumber, int angle, bool useOffset);
-        void setTibiaAngle(int legID, int angle);
-        void setFemurAngle(int legID, int angle);
-        void setCoxaAngle(int legID, int angle);
-        void setAllTibiaAngle(int angle);
-        void setAllFemurAngle(int angle);
-        void setAllCoxaAngle(int angle);
+        void SetAngle(int servoNumber, int angle, bool useOffset);
+        void SetTibiaAngle(int legID, int angle);
+        void SetFemurAngle(int legID, int angle);
+        void SetCoxaAngle(int legID, int angle);
+        void SetAllTibiaAngle(int angle);
+        void SetAllFemurAngle(int angle);
+        void SetAllCoxaAngle(int angle);
     }
 }

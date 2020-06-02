@@ -40,7 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="ILogMaster.cs" />
+    <Compile Include="ILogger.cs" />
     <Compile Include="IMoveSource.cs" />
     <Compile Include="IPresenter.cs" />
     <Compile Include="IRobot.cs" />

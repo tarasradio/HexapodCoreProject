@@ -12,17 +12,17 @@ namespace HexapodGUIProject.ViewModels
 {
     public class ServousModel
     {
-        public delegate void newUpdateHandler();
-        public delegate void newSelectedIDHandler(int id);
-        public event newUpdateHandler onNewUpdateModel;
-        public event newSelectedIDHandler onNewSelectID;
+        public delegate void NewUpdateHandler();
+        public delegate void NewSelectedIDHandler(int id);
+        public event NewUpdateHandler OnNewUpdateModel;
+        public event NewSelectedIDHandler OnNewSelectID;
 
-        Storage _storage;
-        Hexapod _hexapod;
-        LogMaster _logMaster;
+        private Storage _storage;
+        private Hexapod _hexapod;
+        private LogMaster _logMaster;
 
         // выбранный привод
-        public int selectedID { get; set; }
+        public int SelectedID { get; set; }
 
         public ServousModel(Storage storage, Hexapod hexapod, LogMaster logMaster)
         {
@@ -31,71 +31,71 @@ namespace HexapodGUIProject.ViewModels
             _logMaster = logMaster;
         }
 
-        public void setOffset(int offset)
+        public void SetOffset(int offset)
         {
-            _storage.settings.Servous[selectedID].Offset = offset;
-            onNewUpdateModel?.Invoke();
+            _storage.Settings.Servous[SelectedID].Offset = offset;
+            OnNewUpdateModel?.Invoke();
         }
 
-        public void setReverce(bool isReverce)
+        public void SetInversion(bool isInverce)
         {
-            _storage.settings.Servous[selectedID].isReverce = isReverce;
-            onNewUpdateModel?.Invoke();
+            _storage.Settings.Servous[SelectedID].isInverce = isInverce;
+            OnNewUpdateModel?.Invoke();
         }
 
-        public void setAngle(int angle)
+        public void SetAngle(int angle)
         {
-            _storage.settings.Servous[selectedID].Angle = angle;
-            int servoNumber = _storage.settings.Servous[selectedID].Number;
-            _hexapod.setAngle(servoNumber, angle);
-            onNewUpdateModel?.Invoke();
+            _storage.Settings.Servous[SelectedID].Angle = angle;
+            int servoNumber = _storage.Settings.Servous[SelectedID].Number;
+            _hexapod.SetAngle(servoNumber, angle);
+            OnNewUpdateModel?.Invoke();
         }
 
-        public void setAngleWithoutOffset(int angle)
+        public void SetAngleWithoutOffset(int angle)
         {
-            _storage.settings.Servous[selectedID].Angle = 
-                angle + _storage.settings.Servous[selectedID].Offset;
-            int servoNumber = _storage.settings.Servous[selectedID].Number;
-            _hexapod.setAngle(servoNumber, angle, false);
-            onNewUpdateModel?.Invoke();
+            _storage.Settings.Servous[SelectedID].Angle = 
+                angle + _storage.Settings.Servous[SelectedID].Offset;
+            int servoNumber = _storage.Settings.Servous[SelectedID].Number;
+            _hexapod.SetAngle(servoNumber, angle, false);
+            OnNewUpdateModel?.Invoke();
         }
 
-        public void setMinAngle(int angle)
+        public void SetMinAngle(int angle)
         {
-            _storage.settings.Servous[selectedID].minAngle = angle;
-            onNewUpdateModel?.Invoke();
+            _storage.Settings.Servous[SelectedID].minAngle = angle;
+            OnNewUpdateModel?.Invoke();
         }
 
-        public void setMaxAngle(int angle)
+        public void SetMaxAngle(int angle)
         {
-            _storage.settings.Servous[selectedID].maxAngle = angle;
-            onNewUpdateModel?.Invoke();
+            _storage.Settings.Servous[SelectedID].maxAngle = angle;
+            OnNewUpdateModel?.Invoke();
         }
 
-        public void selectID(int ID)
+        public void SelectID(int ID)
         {
-            if (!_storage.settings.Servous.Keys.Contains(ID))
+            if (!_storage.Settings.Servous.Keys.Contains(ID))
                 return;
-            selectedID = ID;
-            onNewSelectID?.Invoke(selectedID);
-            _logMaster.addMessage("Выбрана строка" + ID);
+            SelectedID = ID;
+            OnNewSelectID?.Invoke(SelectedID);
+            _logMaster.AddMessage("Выбрана строка" + ID);
         }
         
-        public Leg getLeg(int id)
+        public Leg GetLeg(int id)
         {
-            return _storage.settings.Legs[id];
+            return _storage.Settings.Legs[id];
         }
 
-        public Servo getItem()
+        public Servo GetItem()
         {
-            return _storage.settings.Servous[selectedID];
+            return _storage.Settings.Servous[SelectedID];
         }
 
-        public List<string[]> getItems()
+        public List<string[]> GetItems()
         {
             List<string[]> items = new List<string[]>();
 
-            foreach(var item in _storage.settings.Servous)
+            foreach(var item in _storage.Settings.Servous)
             {
                 string[] stringItem = new string[8];
 
@@ -106,7 +106,7 @@ namespace HexapodGUIProject.ViewModels
                 stringItem[4] = item.Value.minAngle.ToString();
                 stringItem[5] = item.Value.maxAngle.ToString();
                 stringItem[6] = item.Value.Offset.ToString();
-                stringItem[7] = item.Value.isReverce.ToString();
+                stringItem[7] = item.Value.isInverce.ToString();
 
                 items.Add(stringItem);
             }

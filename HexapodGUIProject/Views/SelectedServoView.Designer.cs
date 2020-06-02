@@ -29,7 +29,7 @@
         private void InitializeComponent()
         {
             this.checkBoxTrace = new System.Windows.Forms.CheckBox();
-            this.checkBoxReverce = new System.Windows.Forms.CheckBox();
+            this.checkBoxInversion = new System.Windows.Forms.CheckBox();
             this.checkBoxCalibration = new System.Windows.Forms.CheckBox();
             this.textServoNumber = new System.Windows.Forms.TextBox();
             this.textServoName = new System.Windows.Forms.TextBox();
@@ -54,18 +54,18 @@
             this.checkBoxTrace.UseVisualStyleBackColor = true;
             this.checkBoxTrace.CheckedChanged += new System.EventHandler(this.checkBoxTrace_CheckedChanged);
             // 
-            // checkBoxReverce
+            // checkBoxInversion
             // 
-            this.checkBoxReverce.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.checkBoxReverce.AutoSize = true;
-            this.checkBoxReverce.Location = new System.Drawing.Point(4, 213);
-            this.checkBoxReverce.Name = "checkBoxReverce";
-            this.checkBoxReverce.RightToLeft = System.Windows.Forms.RightToLeft.No;
-            this.checkBoxReverce.Size = new System.Drawing.Size(89, 17);
-            this.checkBoxReverce.TabIndex = 30;
-            this.checkBoxReverce.Text = "Зеркальный";
-            this.checkBoxReverce.UseVisualStyleBackColor = true;
-            this.checkBoxReverce.CheckedChanged += new System.EventHandler(this.checkBoxReverce_CheckedChanged);
+            this.checkBoxInversion.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.checkBoxInversion.AutoSize = true;
+            this.checkBoxInversion.Location = new System.Drawing.Point(4, 213);
+            this.checkBoxInversion.Name = "checkBoxInversion";
+            this.checkBoxInversion.RightToLeft = System.Windows.Forms.RightToLeft.No;
+            this.checkBoxInversion.Size = new System.Drawing.Size(104, 17);
+            this.checkBoxInversion.TabIndex = 30;
+            this.checkBoxInversion.Text = "Инвертировать";
+            this.checkBoxInversion.UseVisualStyleBackColor = true;
+            this.checkBoxInversion.CheckedChanged += new System.EventHandler(this.checkBoxReverce_CheckedChanged);
             // 
             // checkBoxCalibration
             // 
@@ -171,7 +171,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.checkBoxTrace);
-            this.Controls.Add(this.checkBoxReverce);
+            this.Controls.Add(this.checkBoxInversion);
             this.Controls.Add(this.checkBoxCalibration);
             this.Controls.Add(this.textServoNumber);
             this.Controls.Add(this.textServoName);
@@ -192,7 +192,7 @@
         #endregion
 
         private System.Windows.Forms.CheckBox checkBoxTrace;
-        private System.Windows.Forms.CheckBox checkBoxReverce;
+        private System.Windows.Forms.CheckBox checkBoxInversion;
         private System.Windows.Forms.CheckBox checkBoxCalibration;
         private System.Windows.Forms.TextBox textServoNumber;
         private System.Windows.Forms.TextBox textServoName;

@@ -1,20 +1,13 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using System.Threading;
+﻿using HexapodInterfacesProject;
+using System;
 using System.IO;
-
-using HexapodInterfacesProject;
 
 namespace HexapodCoreProject.Masters
 {
-    public class LogMaster : ILogMaster
+    public class LogMaster : ILogger
     {
         public delegate void newMessageHandler(string message);
-        public event newMessageHandler onNewMessageAdded;
+        public event newMessageHandler OnNewMessageAdded;
         
         private string fileName;
 
@@ -23,7 +16,7 @@ namespace HexapodCoreProject.Masters
             fileName = "Log_" + DateTime.Now.ToString("dd_MM_yyyy_#_HH_mm_ss") + ".txt";
         }
 
-        public void addMessage(string text)
+        public void AddMessage(string text)
         {
             StreamWriter writer = new StreamWriter(fileName, true);
 
@@ -33,7 +26,7 @@ namespace HexapodCoreProject.Masters
             writer.WriteLine(line);
             writer.Close();
 
-            onNewMessageAdded?.Invoke(line);
+            OnNewMessageAdded?.Invoke(line);
         }
     }
 }

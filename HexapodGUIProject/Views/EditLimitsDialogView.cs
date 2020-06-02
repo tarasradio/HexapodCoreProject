@@ -1,11 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.ComponentModel;
-using System.Data;
-using System.Drawing;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace HexapodGUIProject.Views
@@ -17,13 +10,13 @@ namespace HexapodGUIProject.Views
             InitializeComponent();
         }
 
-        public void setInitValues(int left, int right)
+        public void SetInitValues(int lowerLimit, int upperLimit)
         {
-            leftLimit.Text = left.ToString();
-            rightLimit.Text = right.ToString();
+            lowerLimitValue.Text = lowerLimit.ToString();
+            upperLimitValue.Text = upperLimit.ToString();
 
-            editLeftValue.Value = left;
-            editRightValue.Value = right;
+            editLowerLimitValue.Value = lowerLimit;
+            editUpperLimitValue.Value = upperLimit;
         }
 
         private void buttonOK_Click(object sender, EventArgs e)
@@ -38,14 +31,14 @@ namespace HexapodGUIProject.Views
             Close();
         }
 
-        public int getLeftValue()
+        public int GetLowerLimit()
         {
-            return (int)editLeftValue.Value;
+            return (int)editLowerLimitValue.Value;
         }
 
-        public int getRightValue()
+        public int GetUpperLimit()
         {
-            return (int)editRightValue.Value;
+            return (int)editUpperLimitValue.Value;
         }
     }
 }
