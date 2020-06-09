@@ -9,9 +9,10 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>HexapodGUIProject</RootNamespace>
     <AssemblyName>HexapodGUIProject</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -108,6 +109,7 @@
     <Compile Include="Properties\Resources.Designer.cs">
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
+      <DesignTime>True</DesignTime>
     </Compile>
     <EmbeddedResource Include="Views\EditLimitsDialogView.resx">
       <DependentUpon>EditLimitsDialogView.cs</DependentUpon>
@@ -146,9 +148,9 @@
       <Project>{e095684e-f805-47d1-8912-d4b31829b06b}</Project>
       <Name>FrundGeneratorProject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GateGeneratorProject\GateGeneratorProject.csproj">
+    <ProjectReference Include="..\GateGeneratorProject\WTFGateGeneratorProject.csproj">
       <Project>{9a9a8dd6-b1da-462e-b865-2206f053f83d}</Project>
-      <Name>GateGeneratorProject</Name>
+      <Name>WTFGateGeneratorProject</Name>
     </ProjectReference>
     <ProjectReference Include="..\HexapodCoreProject\HexapodCoreProject.csproj">
       <Project>{d90869a7-0ef5-4e06-9526-2c9d99e8c36a}</Project>
@@ -157,6 +159,10 @@
     <ProjectReference Include="..\HexapodIntefacesProject\HexapodInterfacesProject.csproj">
       <Project>{46666a45-5734-4a86-a125-b44843a4c3aa}</Project>
       <Name>HexapodInterfacesProject</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\RealtimeGeneratorProject\RealtimeGeneratorProject.csproj">
+      <Project>{dc0fdd80-09ba-46b5-8e21-b2636a915c4c}</Project>
+      <Name>RealtimeGeneratorProject</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

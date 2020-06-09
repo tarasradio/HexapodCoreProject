@@ -10,28 +10,28 @@ using System.Windows.Forms;
 
 namespace GateGeneratorProject.Views
 {
-    public partial class GateGeneratorView : UserControl
+    public partial class WTFGateGeneratorView : UserControl
     {
-        GateGenerator _generator;
+        WTFGateGenerator _generator;
 
-        public GateGeneratorView()
+        public WTFGateGeneratorView()
         {
             InitializeComponent();
         }
 
-        public void addGenerator(GateGenerator generator)
+        public void AddGenerator(WTFGateGenerator generator)
         {
             _generator = generator;
         }
 
         private void buttonRorward_Click(object sender, EventArgs e)
         {
-            _generator.startMoveForward();
+            _generator.StartMoveForward();
         }
 
         private void buttonStop_Click(object sender, EventArgs e)
         {
-            _generator.stopMove();
+            _generator.StopMove();
         }
     }
 }

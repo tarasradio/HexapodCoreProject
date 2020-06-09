@@ -9,8 +9,9 @@
     <AppDesignerFolder>Properties</AppDesignerFolder>
     <RootNamespace>GateGeneratorProject</RootNamespace>
     <AssemblyName>GateGeneratorProject</AssemblyName>
-    <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -43,13 +44,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Core\GateRunner.cs" />
-    <Compile Include="GateGenerator.cs" />
+    <Compile Include="WTFGateGenerator.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Views\GateGeneratorView.cs">
+    <Compile Include="Views\WTFGateGeneratorView.cs">
       <SubType>UserControl</SubType>
     </Compile>
-    <Compile Include="Views\GateGeneratorView.Designer.cs">
-      <DependentUpon>GateGeneratorView.cs</DependentUpon>
+    <Compile Include="Views\WTFGateGeneratorView.Designer.cs">
+      <DependentUpon>WTFGateGeneratorView.cs</DependentUpon>
     </Compile>
   </ItemGroup>
   <ItemGroup>
@@ -59,8 +60,8 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Views\GateGeneratorView.resx">
-      <DependentUpon>GateGeneratorView.cs</DependentUpon>
+    <EmbeddedResource Include="Views\WTFGateGeneratorView.resx">
+      <DependentUpon>WTFGateGeneratorView.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -1,6 +1,6 @@
 ﻿namespace GateGeneratorProject.Views
 {
-    partial class GateGeneratorView
+    partial class WTFGateGeneratorView
     {
         /// <summary> 
         /// Обязательная переменная конструктора.

@@ -38,8 +38,9 @@
             this.toolStripLabel1 = new System.Windows.Forms.ToolStripLabel();
             this.sourcesListBox = new System.Windows.Forms.ToolStripComboBox();
             this.selectGeneratorButton = new System.Windows.Forms.ToolStripButton();
-            this.terminateSelectGenerator = new System.Windows.Forms.ToolStripButton();
+            this.terminateGeneratorButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.goToStartButton = new System.Windows.Forms.ToolStripButton();
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.connectionState = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
@@ -48,12 +49,13 @@
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.structureView = new HexapodGUIProject.Views.StructureView();
             this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.gateGeneratorView = new GateGeneratorProject.Views.GateGeneratorView();
+            this.wtfGeneratorView = new GateGeneratorProject.Views.WTFGateGeneratorView();
             this.tabPage4 = new System.Windows.Forms.TabPage();
             this.frundGeneratorView = new FrundGeneratorProject.Views.FrundGeneratorView();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
             this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
             this.logView = new HexapodGUIProject.Views.LogView();
-            this.toolStripButton1 = new System.Windows.Forms.ToolStripButton();
+            this.realtimeGeneratorView = new RealtimeGeneratorProject.Views.RealtimeGeneratorView();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
@@ -61,6 +63,7 @@
             this.tabPage2.SuspendLayout();
             this.tabPage3.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -75,9 +78,9 @@
             this.toolStripLabel1,
             this.sourcesListBox,
             this.selectGeneratorButton,
-            this.terminateSelectGenerator,
+            this.terminateGeneratorButton,
             this.toolStripSeparator2,
-            this.toolStripButton1});
+            this.goToStartButton});
             this.toolStrip1.Location = new System.Drawing.Point(0, 0);
             this.toolStrip1.Name = "toolStrip1";
             this.toolStrip1.RenderMode = System.Windows.Forms.ToolStripRenderMode.System;
@@ -143,20 +146,30 @@
             this.selectGeneratorButton.Text = "Переключиться";
             this.selectGeneratorButton.Click += new System.EventHandler(this.selectGeneratorButton_Click);
             // 
-            // terminateSelectGenerator
+            // terminateGeneratorButton
             // 
-            this.terminateSelectGenerator.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.terminateSelectGenerator.Image = ((System.Drawing.Image)(resources.GetObject("terminateSelectGenerator.Image")));
-            this.terminateSelectGenerator.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.terminateSelectGenerator.Name = "terminateSelectGenerator";
-            this.terminateSelectGenerator.Size = new System.Drawing.Size(75, 36);
-            this.terminateSelectGenerator.Text = "Остановить";
-            this.terminateSelectGenerator.Click += new System.EventHandler(this.terminateSelectGenerator_Click);
+            this.terminateGeneratorButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.terminateGeneratorButton.Image = ((System.Drawing.Image)(resources.GetObject("terminateGeneratorButton.Image")));
+            this.terminateGeneratorButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.terminateGeneratorButton.Name = "terminateGeneratorButton";
+            this.terminateGeneratorButton.Size = new System.Drawing.Size(75, 36);
+            this.terminateGeneratorButton.Text = "Остановить";
+            this.terminateGeneratorButton.Click += new System.EventHandler(this.terminateGeneratorButton_Click);
             // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // goToStartButton
+            // 
+            this.goToStartButton.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.goToStartButton.Image = ((System.Drawing.Image)(resources.GetObject("goToStartButton.Image")));
+            this.goToStartButton.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.goToStartButton.Name = "goToStartButton";
+            this.goToStartButton.Size = new System.Drawing.Size(76, 36);
+            this.goToStartButton.Text = "В стартовое";
+            this.goToStartButton.Click += new System.EventHandler(this.goToStartButton_Click);
             // 
             // statusStrip1
             // 
@@ -183,6 +196,7 @@
             this.tabControl1.Controls.Add(this.tabPage2);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage4);
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Location = new System.Drawing.Point(12, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
@@ -235,25 +249,25 @@
             // 
             // tabPage3
             // 
-            this.tabPage3.Controls.Add(this.gateGeneratorView);
+            this.tabPage3.Controls.Add(this.wtfGeneratorView);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
             this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage3.Size = new System.Drawing.Size(546, 225);
             this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "Управление походкой";
+            this.tabPage3.Text = "WTF Gait";
             this.tabPage3.UseVisualStyleBackColor = true;
             // 
             // gateGeneratorView
             // 
-            this.gateGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            this.wtfGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.gateGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.gateGeneratorView.Location = new System.Drawing.Point(6, 6);
-            this.gateGeneratorView.Name = "gateGeneratorView";
-            this.gateGeneratorView.Size = new System.Drawing.Size(534, 213);
-            this.gateGeneratorView.TabIndex = 1;
+            this.wtfGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.wtfGeneratorView.Location = new System.Drawing.Point(6, 6);
+            this.wtfGeneratorView.Name = "gateGeneratorView";
+            this.wtfGeneratorView.Size = new System.Drawing.Size(534, 213);
+            this.wtfGeneratorView.TabIndex = 1;
             // 
             // tabPage4
             // 
@@ -263,7 +277,7 @@
             this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
             this.tabPage4.Size = new System.Drawing.Size(546, 225);
             this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "Управление из ФРУНД";
+            this.tabPage4.Text = "FRUND Files";
             this.tabPage4.UseVisualStyleBackColor = true;
             // 
             // frundGeneratorView
@@ -276,6 +290,17 @@
             this.frundGeneratorView.Name = "frundGeneratorView";
             this.frundGeneratorView.Size = new System.Drawing.Size(534, 213);
             this.frundGeneratorView.TabIndex = 0;
+            // 
+            // tabPage5
+            // 
+            this.tabPage5.Controls.Add(this.realtimeGeneratorView);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
+            this.tabPage5.Size = new System.Drawing.Size(546, 225);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Realtime";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
             // selectedServoView
             // 
@@ -296,15 +321,15 @@
             this.logView.Size = new System.Drawing.Size(554, 131);
             this.logView.TabIndex = 3;
             // 
-            // toolStripButton1
+            // realtimeGeneratorView
             // 
-            this.toolStripButton1.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.toolStripButton1.Image = ((System.Drawing.Image)(resources.GetObject("toolStripButton1.Image")));
-            this.toolStripButton1.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.toolStripButton1.Name = "toolStripButton1";
-            this.toolStripButton1.Size = new System.Drawing.Size(76, 36);
-            this.toolStripButton1.Text = "В стартовое";
-            this.toolStripButton1.Click += new System.EventHandler(this.toolStripButton1_Click);
+            this.realtimeGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.realtimeGeneratorView.Location = new System.Drawing.Point(6, 6);
+            this.realtimeGeneratorView.Name = "realtimeGeneratorView";
+            this.realtimeGeneratorView.Size = new System.Drawing.Size(534, 213);
+            this.realtimeGeneratorView.TabIndex = 0;
             // 
             // MainView
             // 
@@ -328,6 +353,7 @@
             this.tabPage2.ResumeLayout(false);
             this.tabPage3.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
+            this.tabPage5.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -336,7 +362,7 @@
         #endregion
 
         private FrundGeneratorProject.Views.FrundGeneratorView frundGeneratorView;
-        private GateGeneratorProject.Views.GateGeneratorView gateGeneratorView;
+        private GateGeneratorProject.Views.WTFGateGeneratorView wtfGeneratorView;
         private Views.LogView logView;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton updateListPortsButton;
@@ -357,9 +383,11 @@
         private System.Windows.Forms.ToolStripComboBox sourcesListBox;
         private System.Windows.Forms.ToolStripButton selectGeneratorButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
-        private System.Windows.Forms.ToolStripButton terminateSelectGenerator;
+        private System.Windows.Forms.ToolStripButton terminateGeneratorButton;
         private Views.StructureView structureView;
-        private System.Windows.Forms.ToolStripButton toolStripButton1;
+        private System.Windows.Forms.ToolStripButton goToStartButton;
+        private System.Windows.Forms.TabPage tabPage5;
+        private RealtimeGeneratorProject.Views.RealtimeGeneratorView realtimeGeneratorView;
     }
 }
 

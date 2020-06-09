@@ -19,7 +19,7 @@ namespace FrundGeneratorProject.Core
 
         public void Run(FrundMoveFile move)
         {
-            _runThread = new Thread(new ParameterizedThreadStart(Running));
+            _runThread = new Thread(new ParameterizedThreadStart(running));
             
             _runThread.Start(move);
             _isRunning = true;
@@ -31,7 +31,7 @@ namespace FrundGeneratorProject.Core
             _isRunning = false;
         }
 
-        private void Running(object ofile)
+        private void running(object ofile)
         {
             var file = (FrundMoveFile)ofile;
             var watch = Stopwatch.StartNew();

@@ -1,4 +1,5 @@
-﻿using FrundGeneratorProject;
+﻿using RealtimeGeneratorProject;
+using FrundGeneratorProject;
 using GateGeneratorProject;
 using HexapodCoreProject;
 using HexapodGUIProject.ViewModels;
@@ -12,10 +13,11 @@ namespace HexapodGUIProject
 {
     public partial class MainView : Form
     {
-        ILogger _logMaster;
+        ILogger _logger;
         HexapodInstance hexapodInst;
         FrundGenerator frundGenerator;
-        GateGenerator gateGenerator;
+        WTFGateGenerator wtfGenerator;
+        RealtimeGenerator realtimeGenerator;
 
         ServousModel _servousModel;
         ServousListPresenter _servousListPresenter;
@@ -30,15 +32,20 @@ namespace HexapodGUIProject
         public void InitAll()
         {
             hexapodInst = new HexapodInstance("config.json");
-            _logMaster = hexapodInst.GetLogger();
-            frundGenerator = new FrundGenerator(hexapodInst.GetHexapod(), _logMaster);
-            gateGenerator = new GateGenerator(hexapodInst.GetHexapod(), _logMaster);
+
+            _logger = hexapodInst.GetLogger();
+
+            frundGenerator = new FrundGenerator(hexapodInst.GetHexapod(), _logger);
+            wtfGenerator = new WTFGateGenerator(hexapodInst.GetHexapod(), _logger);
+            realtimeGenerator = new RealtimeGenerator(hexapodInst.GetHexapod(), _logger);
 
             hexapodInst.AddMoveSource(frundGenerator);
-            hexapodInst.AddMoveSource(gateGenerator);
+            hexapodInst.AddMoveSource(wtfGenerator);
+            hexapodInst.AddMoveSource(realtimeGenerator);
 
             frundGeneratorView.AddGenerator(frundGenerator);
-            gateGeneratorView.addGenerator(gateGenerator);
+            wtfGeneratorView.AddGenerator(wtfGenerator);
+            realtimeGeneratorView.AddGenerator(realtimeGenerator);
 
             hexapodInst.GetLogger().OnNewMessageAdded 
                 += logView.AddMessage;
@@ -91,7 +98,7 @@ namespace HexapodGUIProject
                 if (isOK)
                 {
                     connectionState.Text = "Установленно соединение с " + portName;
-                    _logMaster.AddMessage(
+                    _logger.AddMessage(
                         "Открытие подключения - Подключение к " + portName + " открыто");
                     connectButton.Text = "Отключение";
                     isOpenConnect = true;
@@ -100,7 +107,7 @@ namespace HexapodGUIProject
                 }
                 else
                 {
-                    _logMaster.AddMessage(
+                    _logger.AddMessage(
                         "Открытие подключения - Ошибка при подключении!");
                     connectionState.Text = "Ожидание соединения";
                 }
@@ -120,14 +127,14 @@ namespace HexapodGUIProject
 
             if (isOpen == true)
             {
-                _logMaster.AddMessage(
+                _logger.AddMessage(
                     "Поиск портов - Найдены открытые порты");
                 connectButton.Enabled = true;
                 portsListBox.SelectedIndex = 0;
             }
             else
             {
-                _logMaster.AddMessage(
+                _logger.AddMessage(
                     "Поиск портов - Открытых портов не найдено");
                 connectButton.Enabled = false;
                 portsListBox.SelectedText = "";
@@ -149,7 +156,7 @@ namespace HexapodGUIProject
             hexapodInst.GetSourceManager().SelectSource(sourceName);
         }
 
-        private void terminateSelectGenerator_Click(object sender, EventArgs e)
+        private void terminateGeneratorButton_Click(object sender, EventArgs e)
         {
             hexapodInst.GetSourceManager().TerminateSource();
         }
@@ -159,7 +166,7 @@ namespace HexapodGUIProject
             hexapodInst.GetStorage().SaveFile("config.json");
         }
 
-        private void toolStripButton1_Click(object sender, EventArgs e)
+        private void goToStartButton_Click(object sender, EventArgs e)
         {
             hexapodInst.GoToStart();
         }

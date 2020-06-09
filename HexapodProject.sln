@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29709.97
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexapodCoreProject", "HexapodCoreProject\HexapodCoreProject.csproj", "{D90869A7-0EF5-4E06-9526-2C9D99E8C36A}"
 EndProject
@@ -11,9 +11,11 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexapodInterfacesProject", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrundGeneratorProject", "FrundGeneratorProject\FrundGeneratorProject.csproj", "{E095684E-F805-47D1-8912-D4B31829B06B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GateGeneratorProject", "GateGeneratorProject\GateGeneratorProject.csproj", "{9A9A8DD6-B1DA-462E-B865-2206F053F83D}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTFGateGeneratorProject", "GateGeneratorProject\WTFGateGeneratorProject.csproj", "{9A9A8DD6-B1DA-462E-B865-2206F053F83D}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexapodConsole", "HexapodConsole\HexapodConsole.csproj", "{0F348B36-29AF-4636-9825-C0878F389397}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtimeGeneratorProject", "RealtimeGeneratorProject\RealtimeGeneratorProject.csproj", "{DC0FDD80-09BA-46B5-8E21-B2636A915C4C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -45,6 +47,10 @@ Global
 		{0F348B36-29AF-4636-9825-C0878F389397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F348B36-29AF-4636-9825-C0878F389397}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0F348B36-29AF-4636-9825-C0878F389397}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DC0FDD80-09BA-46B5-8E21-B2636A915C4C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DC0FDD80-09BA-46B5-8E21-B2636A915C4C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DC0FDD80-09BA-46B5-8E21-B2636A915C4C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DC0FDD80-09BA-46B5-8E21-B2636A915C4C}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

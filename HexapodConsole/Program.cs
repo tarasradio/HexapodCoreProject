@@ -110,7 +110,7 @@ namespace HexapodConsole
             var frundGenerator = new FrundGenerator(_hexapod.GetHexapod(), _logMaster);
             frundGenerator.Enable();
             frundGenerator.AddFile(drivemag);
-            frundGenerator.startMove(0);
+            frundGenerator.StartMove(0);
         }
 
         private static void _logMaster_onNewMessageAdded(string message)

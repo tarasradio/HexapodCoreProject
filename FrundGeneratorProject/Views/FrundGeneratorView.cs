@@ -83,12 +83,12 @@ namespace FrundGeneratorProject.Views
         private void startMoveButton_Click(object sender, EventArgs e)
         {
             if (filesListView.CurrentRow != null)            
-                _generator.startMove(filesListView.CurrentRow.Index);
+                _generator.StartMove(filesListView.CurrentRow.Index);
         }
 
         private void stopMoveButton_Click(object sender, EventArgs e)
         {
-            _generator.stopMove();
+            _generator.StopMove();
         }
     }
 }
