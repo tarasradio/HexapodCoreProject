@@ -8,65 +8,63 @@ namespace RealtimeGeneratorProject.Core
 {
     public class TrajectoryReceiver
     {
-        IRobot _hexapod;
-        ILogger _logger;
+        IRobot hexapod;
+        ILogger logger;
 
-        Socket _socket;
+        Socket frundSocket;
 
-        byte[] _buffer = new byte[300 * 8];
+        byte[] buffer = new byte[300 * 8];
 
-        EndPoint _frund = new IPEndPoint(IPAddress.Any, 0);
+        EndPoint frundEndPoint = new IPEndPoint(IPAddress.Any, 0);
 
-        private Thread _runThread;
+        private Thread thread;
 
         public TrajectoryReceiver(IRobot hexapod, ILogger logger)
         {
-            _hexapod = hexapod;
-            _logger = logger;
+            this.hexapod = hexapod;
+            this.logger = logger;
 
-            _socket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
+            frundSocket = new Socket(AddressFamily.InterNetwork, SocketType.Dgram, ProtocolType.Udp);
         }
 
         public void Run(int port)
         {
             IPEndPoint localIP = new IPEndPoint(IPAddress.Parse("127.0.0.1"), port);
-            if(!_socket.IsBound)
-                _socket.Bind(localIP);
+            if(!frundSocket.IsBound)
+                frundSocket.Bind(localIP);
 
-            _runThread = new Thread(threadFunction);
-            _runThread.Start();
+            thread = new Thread(FrundExchange);
+            thread.IsBackground = true;
+            thread.Start();
         }
 
         public void Terminate()
         {
-            _runThread.Abort();
+            thread.Abort();
         }
 
         const int bytesPerJoint = 2;
 
-        private void threadFunction()
+        private void FrundExchange()
         {
             while(true)
             {
-                int bytes = _socket.ReceiveFrom(_buffer, ref _frund);
+                int bytes = frundSocket.ReceiveFrom(buffer, ref frundEndPoint);
 
                 Console.WriteLine($"Received {bytes} bytes.");
 
-                float time = BitConverter.ToSingle(_buffer, 0);
+                float time = BitConverter.ToSingle(buffer, 0);
 
                 Console.WriteLine($"Time = {time}");
 
                 for(int i = 0; i < 18; i++)
                 {
-                    int jointNumber = (int)BitConverter.ToSingle(_buffer, i * sizeof(float) * bytesPerJoint + 4);
-                    double angle = BitConverter.ToSingle(_buffer, i * sizeof(float) * bytesPerJoint + 8);
-                    
-                    int angleDegrees = (int)((180.0 / Math.PI) * angle);
+                    int jointNumber = (int)BitConverter.ToSingle(buffer, i * sizeof(float) * bytesPerJoint + 4);
+                    double angle = BitConverter.ToSingle(buffer, i * sizeof(float) * bytesPerJoint + 8);
 
-                    angleDegrees *= -1;
-                    angleDegrees += 90;
+                    int angleDegrees = ConvertToDegrees(angle);
 
-                    _hexapod.SetAngle(jointNumber, angleDegrees, true);
+                    hexapod.SetAngle(jointNumber, angleDegrees, true);
                     //Console.WriteLine($"joint[{jointNumber}] = {angleDegrees};");
                 }
 
@@ -75,6 +73,16 @@ namespace RealtimeGeneratorProject.Core
 
                 //Console.WriteLine($"Sended {bytes} bytes.");
             }
+        }
+
+        private static int ConvertToDegrees(double angle)
+        {
+            int angleDegrees = (int)((180.0 / Math.PI) * angle);
+
+            angleDegrees *= -1;
+            angleDegrees += 90;
+
+            return angleDegrees;
         }
     }
 }
