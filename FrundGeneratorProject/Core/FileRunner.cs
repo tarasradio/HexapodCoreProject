@@ -6,38 +6,38 @@ namespace FrundGeneratorProject.Core
 {
     class FileRunner : IFileRunner
     {
-        private readonly ILogger _logMaster;
-        private readonly IRobot _robot;
-        private Thread _runThread;
-        private bool _isRunning;
+        private readonly ILogger logger;
+        private readonly IRobot hexapod;
+        private Thread thread;
+        private bool isRunning;
 
-        public FileRunner(IRobot robot, ILogger logMaster)
+        public FileRunner(IRobot hexapod, ILogger logger)
         {
-            _robot = robot;
-            _logMaster = logMaster;
+            this.hexapod = hexapod;
+            this.logger = logger;
         }
 
         public void Run(FrundMoveFile move)
         {
-            _runThread = new Thread(new ParameterizedThreadStart(running));
+            thread = new Thread(new ParameterizedThreadStart(ExecuteFrames));
             
-            _runThread.Start(move);
-            _isRunning = true;
+            thread.Start(move);
+            isRunning = true;
         }
 
         public void Terminate()
         {
-            _runThread.Join();
-            _isRunning = false;
+            thread.Join();
+            isRunning = false;
         }
 
-        private void running(object ofile)
+        private void ExecuteFrames(object ofile)
         {
             var file = (FrundMoveFile)ofile;
             var watch = Stopwatch.StartNew();
 
             int i = 0;
-            while (i < file.Frames.Count && _isRunning)
+            while (i < file.Frames.Count && isRunning)
             {
                 long currentTime = watch.ElapsedMilliseconds;
 
@@ -61,7 +61,7 @@ namespace FrundGeneratorProject.Core
                 ExecuteFrame(file.Frames[i]);
             }
 
-            _logMaster.AddMessage("FRUND Generator: Moving has been finished");
+            logger.AddMessage("FRUND Generator: Moving has been finished");
         }
 
         void ExecuteFrame(MoveFrame frame)
@@ -69,8 +69,7 @@ namespace FrundGeneratorProject.Core
             //_logMaster.addMessage($"FRUND generator: time = {frame.Time}");
 
             foreach(var move in frame.Moves)
-                _robot.SetAngle(move.ServoNumber, move.Angle, true);
-            
+                hexapod.SetAngle(move.ServoNumber, move.Angle, true);
         }
     }
 }
