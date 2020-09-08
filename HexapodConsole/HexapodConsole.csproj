@@ -68,10 +68,6 @@
       <Project>{e095684e-f805-47d1-8912-d4b31829b06b}</Project>
       <Name>FrundGeneratorProject</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GateGeneratorProject\WTFGateGeneratorProject.csproj">
-      <Project>{9a9a8dd6-b1da-462e-b865-2206f053f83d}</Project>
-      <Name>WTFGateGeneratorProject</Name>
-    </ProjectReference>
     <ProjectReference Include="..\HexapodCoreProject\HexapodCoreProject.csproj">
       <Project>{d90869a7-0ef5-4e06-9526-2c9d99e8c36a}</Project>
       <Name>HexapodCoreProject</Name>

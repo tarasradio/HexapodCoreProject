@@ -8,18 +8,16 @@ namespace HexapodGUIProject.Views
 {
     public partial class ServousListView : UserControl, IView
     {
-        ServousListPresenter _presenter;
-        const int Columns = 8;
+        ServousListPresenter presenter;
         
-        string[] GridTitles =
-        {   "#",
-            "Packet channel",
-            "Description",
-            "Current position",
-            "Lower limit",
-            "Upper limit",
-            "Offset",
-            "Inversion" };
+        private string[] GridTitles = {
+            "№",
+            "Описание",
+            "Позиция",
+            "Нижний предел",
+            "Верхний предел",
+            "Смещение",
+            "Инверсия" };
 
         enum States { UPDATE, SHOW };
         States state = States.SHOW;
@@ -32,19 +30,17 @@ namespace HexapodGUIProject.Views
 
         public void SetPresenter (IPresenter presenter)
         {
-            _presenter = (ServousListPresenter)presenter;
-            _presenter.SetView(this);
+            this.presenter = (ServousListPresenter)presenter;
+            this.presenter.SetView(this);
         }
 
         private void initView()
         {
-            //вставляем заголовки
-            servousList.ColumnCount = Columns;
-            for (int i = 0; i < Columns; i++)
+            servousList.ColumnCount = GridTitles.Length;
+            for (int i = 0; i < servousList.ColumnCount; i++)
                 servousList.Columns[i].HeaderText = GridTitles[i];
-            servousList.Columns[2].AutoSizeMode =
-            DataGridViewAutoSizeColumnMode.Fill;
-            servousList.Columns[2].MinimumWidth = 100;
+            servousList.Columns[1].AutoSizeMode = DataGridViewAutoSizeColumnMode.Fill;
+            servousList.Columns[1].MinimumWidth = 100;
         }
 
         public void SelectId(int id)
@@ -63,13 +59,13 @@ namespace HexapodGUIProject.Views
         public void UpdateFromModel()
         {
             state = States.UPDATE;
-            List<string[]> items = _presenter.getItems();
+            List<string[]> items = presenter.getItems();
             servousList.RowCount = items.Count;
             int index = 0;
             foreach (var item in items)
             {
-                for (int col = 0; col < Columns; col++)
-                    servousList[col, index].Value = item[col];
+                for (int i = 0; i < servousList.ColumnCount; i++)
+                    servousList[i, index].Value = item[i];
                 index++;
             }
 
@@ -82,7 +78,7 @@ namespace HexapodGUIProject.Views
 
             int index = servousList.CurrentRow.Index;
             if (index == -1) return;
-            _presenter.selectID(
+            presenter.selectID(
                 int.Parse(servousList.CurrentRow.Cells[0].Value.ToString()));
         }
     }

@@ -44,26 +44,20 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.connectionState = new System.Windows.Forms.ToolStripStatusLabel();
             this.tabControl1 = new System.Windows.Forms.TabControl();
-            this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ServosTabPage = new System.Windows.Forms.TabPage();
             this.servousListView = new HexapodGUIProject.Views.ServousListView();
-            this.tabPage2 = new System.Windows.Forms.TabPage();
-            this.structureView = new HexapodGUIProject.Views.StructureView();
-            this.tabPage3 = new System.Windows.Forms.TabPage();
-            this.wtfGeneratorView = new GateGeneratorProject.Views.WTFGateGeneratorView();
-            this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.FrundGeneratorTabPage = new System.Windows.Forms.TabPage();
             this.frundGeneratorView = new FrundGeneratorProject.Views.FrundGeneratorView();
-            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.RealtimeGeneratorTabPage = new System.Windows.Forms.TabPage();
+            this.realtimeGeneratorView = new RealtimeGeneratorProject.Views.RealtimeGeneratorView();
             this.selectedServoView = new HexapodGUIProject.Views.SelectedServoView();
             this.logView = new HexapodGUIProject.Views.LogView();
-            this.realtimeGeneratorView = new RealtimeGeneratorProject.Views.RealtimeGeneratorView();
             this.toolStrip1.SuspendLayout();
             this.statusStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
-            this.tabPage1.SuspendLayout();
-            this.tabPage2.SuspendLayout();
-            this.tabPage3.SuspendLayout();
-            this.tabPage4.SuspendLayout();
-            this.tabPage5.SuspendLayout();
+            this.ServosTabPage.SuspendLayout();
+            this.FrundGeneratorTabPage.SuspendLayout();
+            this.RealtimeGeneratorTabPage.SuspendLayout();
             this.SuspendLayout();
             // 
             // toolStrip1
@@ -192,27 +186,25 @@
             this.tabControl1.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
             | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
-            this.tabControl1.Controls.Add(this.tabPage1);
-            this.tabControl1.Controls.Add(this.tabPage2);
-            this.tabControl1.Controls.Add(this.tabPage3);
-            this.tabControl1.Controls.Add(this.tabPage4);
-            this.tabControl1.Controls.Add(this.tabPage5);
+            this.tabControl1.Controls.Add(this.ServosTabPage);
+            this.tabControl1.Controls.Add(this.FrundGeneratorTabPage);
+            this.tabControl1.Controls.Add(this.RealtimeGeneratorTabPage);
             this.tabControl1.Location = new System.Drawing.Point(12, 42);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
             this.tabControl1.Size = new System.Drawing.Size(554, 251);
             this.tabControl1.TabIndex = 7;
             // 
-            // tabPage1
+            // ServosTabPage
             // 
-            this.tabPage1.Controls.Add(this.servousListView);
-            this.tabPage1.Location = new System.Drawing.Point(4, 22);
-            this.tabPage1.Name = "tabPage1";
-            this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(546, 225);
-            this.tabPage1.TabIndex = 0;
-            this.tabPage1.Text = "Таблица приводов";
-            this.tabPage1.UseVisualStyleBackColor = true;
+            this.ServosTabPage.Controls.Add(this.servousListView);
+            this.ServosTabPage.Location = new System.Drawing.Point(4, 22);
+            this.ServosTabPage.Name = "ServosTabPage";
+            this.ServosTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.ServosTabPage.Size = new System.Drawing.Size(546, 225);
+            this.ServosTabPage.TabIndex = 0;
+            this.ServosTabPage.Text = "Таблица приводов";
+            this.ServosTabPage.UseVisualStyleBackColor = true;
             // 
             // servousListView
             // 
@@ -224,61 +216,16 @@
             this.servousListView.Size = new System.Drawing.Size(534, 213);
             this.servousListView.TabIndex = 6;
             // 
-            // tabPage2
+            // FrundGeneratorTabPage
             // 
-            this.tabPage2.Controls.Add(this.structureView);
-            this.tabPage2.Location = new System.Drawing.Point(4, 22);
-            this.tabPage2.Name = "tabPage2";
-            this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(546, 225);
-            this.tabPage2.TabIndex = 1;
-            this.tabPage2.Text = "Управление структурой";
-            this.tabPage2.UseVisualStyleBackColor = true;
-            // 
-            // structureView
-            // 
-            this.structureView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.structureView.BackColor = System.Drawing.SystemColors.ControlLightLight;
-            this.structureView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.structureView.Location = new System.Drawing.Point(6, 6);
-            this.structureView.Name = "structureView";
-            this.structureView.Size = new System.Drawing.Size(534, 213);
-            this.structureView.TabIndex = 0;
-            // 
-            // tabPage3
-            // 
-            this.tabPage3.Controls.Add(this.wtfGeneratorView);
-            this.tabPage3.Location = new System.Drawing.Point(4, 22);
-            this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage3.Size = new System.Drawing.Size(546, 225);
-            this.tabPage3.TabIndex = 2;
-            this.tabPage3.Text = "WTF Gait";
-            this.tabPage3.UseVisualStyleBackColor = true;
-            // 
-            // gateGeneratorView
-            // 
-            this.wtfGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.wtfGeneratorView.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.wtfGeneratorView.Location = new System.Drawing.Point(6, 6);
-            this.wtfGeneratorView.Name = "gateGeneratorView";
-            this.wtfGeneratorView.Size = new System.Drawing.Size(534, 213);
-            this.wtfGeneratorView.TabIndex = 1;
-            // 
-            // tabPage4
-            // 
-            this.tabPage4.Controls.Add(this.frundGeneratorView);
-            this.tabPage4.Location = new System.Drawing.Point(4, 22);
-            this.tabPage4.Name = "tabPage4";
-            this.tabPage4.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage4.Size = new System.Drawing.Size(546, 225);
-            this.tabPage4.TabIndex = 3;
-            this.tabPage4.Text = "FRUND Files";
-            this.tabPage4.UseVisualStyleBackColor = true;
+            this.FrundGeneratorTabPage.Controls.Add(this.frundGeneratorView);
+            this.FrundGeneratorTabPage.Location = new System.Drawing.Point(4, 22);
+            this.FrundGeneratorTabPage.Name = "FrundGeneratorTabPage";
+            this.FrundGeneratorTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.FrundGeneratorTabPage.Size = new System.Drawing.Size(546, 225);
+            this.FrundGeneratorTabPage.TabIndex = 1;
+            this.FrundGeneratorTabPage.Text = "FRUND Generator (Files)";
+            this.FrundGeneratorTabPage.UseVisualStyleBackColor = true;
             // 
             // frundGeneratorView
             // 
@@ -291,16 +238,26 @@
             this.frundGeneratorView.Size = new System.Drawing.Size(534, 213);
             this.frundGeneratorView.TabIndex = 0;
             // 
-            // tabPage5
+            // RealtimeGeneratorTabPage
             // 
-            this.tabPage5.Controls.Add(this.realtimeGeneratorView);
-            this.tabPage5.Location = new System.Drawing.Point(4, 22);
-            this.tabPage5.Name = "tabPage5";
-            this.tabPage5.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage5.Size = new System.Drawing.Size(546, 225);
-            this.tabPage5.TabIndex = 4;
-            this.tabPage5.Text = "Realtime";
-            this.tabPage5.UseVisualStyleBackColor = true;
+            this.RealtimeGeneratorTabPage.Controls.Add(this.realtimeGeneratorView);
+            this.RealtimeGeneratorTabPage.Location = new System.Drawing.Point(4, 22);
+            this.RealtimeGeneratorTabPage.Name = "RealtimeGeneratorTabPage";
+            this.RealtimeGeneratorTabPage.Padding = new System.Windows.Forms.Padding(3);
+            this.RealtimeGeneratorTabPage.Size = new System.Drawing.Size(546, 225);
+            this.RealtimeGeneratorTabPage.TabIndex = 2;
+            this.RealtimeGeneratorTabPage.Text = "Realtime Generator";
+            this.RealtimeGeneratorTabPage.UseVisualStyleBackColor = true;
+            // 
+            // realtimeGeneratorView
+            // 
+            this.realtimeGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
+            | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.realtimeGeneratorView.Location = new System.Drawing.Point(6, 6);
+            this.realtimeGeneratorView.Name = "realtimeGeneratorView";
+            this.realtimeGeneratorView.Size = new System.Drawing.Size(534, 213);
+            this.realtimeGeneratorView.TabIndex = 0;
             // 
             // selectedServoView
             // 
@@ -321,16 +278,6 @@
             this.logView.Size = new System.Drawing.Size(554, 131);
             this.logView.TabIndex = 3;
             // 
-            // realtimeGeneratorView
-            // 
-            this.realtimeGeneratorView.Anchor = ((System.Windows.Forms.AnchorStyles)((((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Bottom) 
-            | System.Windows.Forms.AnchorStyles.Left) 
-            | System.Windows.Forms.AnchorStyles.Right)));
-            this.realtimeGeneratorView.Location = new System.Drawing.Point(6, 6);
-            this.realtimeGeneratorView.Name = "realtimeGeneratorView";
-            this.realtimeGeneratorView.Size = new System.Drawing.Size(534, 213);
-            this.realtimeGeneratorView.TabIndex = 0;
-            // 
             // MainView
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
@@ -349,11 +296,9 @@
             this.statusStrip1.ResumeLayout(false);
             this.statusStrip1.PerformLayout();
             this.tabControl1.ResumeLayout(false);
-            this.tabPage1.ResumeLayout(false);
-            this.tabPage2.ResumeLayout(false);
-            this.tabPage3.ResumeLayout(false);
-            this.tabPage4.ResumeLayout(false);
-            this.tabPage5.ResumeLayout(false);
+            this.ServosTabPage.ResumeLayout(false);
+            this.FrundGeneratorTabPage.ResumeLayout(false);
+            this.RealtimeGeneratorTabPage.ResumeLayout(false);
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -362,7 +307,6 @@
         #endregion
 
         private FrundGeneratorProject.Views.FrundGeneratorView frundGeneratorView;
-        private GateGeneratorProject.Views.WTFGateGeneratorView wtfGeneratorView;
         private Views.LogView logView;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripButton updateListPortsButton;
@@ -372,10 +316,8 @@
         private System.Windows.Forms.ToolStripStatusLabel connectionState;
         private Views.ServousListView servousListView;
         private System.Windows.Forms.TabControl tabControl1;
-        private System.Windows.Forms.TabPage tabPage1;
-        private System.Windows.Forms.TabPage tabPage2;
-        private System.Windows.Forms.TabPage tabPage3;
-        private System.Windows.Forms.TabPage tabPage4;
+        private System.Windows.Forms.TabPage ServosTabPage;
+        private System.Windows.Forms.TabPage FrundGeneratorTabPage;
         private Views.SelectedServoView selectedServoView;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator3;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
@@ -384,9 +326,8 @@
         private System.Windows.Forms.ToolStripButton selectGeneratorButton;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator2;
         private System.Windows.Forms.ToolStripButton terminateGeneratorButton;
-        private Views.StructureView structureView;
         private System.Windows.Forms.ToolStripButton goToStartButton;
-        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TabPage RealtimeGeneratorTabPage;
         private RealtimeGeneratorProject.Views.RealtimeGeneratorView realtimeGeneratorView;
     }
 }

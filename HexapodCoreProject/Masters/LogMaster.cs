@@ -4,14 +4,14 @@ using System.IO;
 
 namespace HexapodCoreProject.Masters
 {
-    public class LogMaster : ILogger
+    public class Logger : ILogger
     {
         public delegate void newMessageHandler(string message);
         public event newMessageHandler OnNewMessageAdded;
         
         private string fileName;
 
-        public LogMaster()
+        public Logger()
         {
             fileName = "Log_" + DateTime.Now.ToString("dd_MM_yyyy_#_HH_mm_ss") + ".txt";
         }

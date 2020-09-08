@@ -7,18 +7,18 @@ namespace FrundGeneratorProject.Core
     /// </summary>
     public class Move : ICloneable
     {
-        public int ServoNumber { get; set; }
+        public int JointNumber { get; set; }
         public int Angle { get; set; }
 
         public Move(int servoNumber, int angle)
         {
-            ServoNumber = servoNumber;
+            JointNumber = servoNumber;
             Angle = angle;
         }
 
         public object Clone()
         {
-            return new Move(ServoNumber, Angle);
+            return new Move(JointNumber, Angle);
         }
     }
 }

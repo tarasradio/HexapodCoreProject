@@ -64,8 +64,7 @@ namespace RealtimeGeneratorProject.Core
 
                     int angleDegrees = ConvertToDegrees(angle);
 
-                    hexapod.SetAngle(jointNumber, angleDegrees, true);
-                    //Console.WriteLine($"joint[{jointNumber}] = {angleDegrees};");
+                    hexapod.JointSetAngle(jointNumber, angleDegrees, true);
                 }
 
                 // Ответный покет отправлять не нужно

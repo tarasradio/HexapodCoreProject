@@ -69,7 +69,7 @@ namespace FrundGeneratorProject.Core
             //_logMaster.addMessage($"FRUND generator: time = {frame.Time}");
 
             foreach(var move in frame.Moves)
-                hexapod.SetAngle(move.ServoNumber, move.Angle, true);
+                hexapod.JointSetAngle(move.JointNumber, move.Angle, true);
         }
     }
 }

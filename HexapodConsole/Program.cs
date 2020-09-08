@@ -10,7 +10,7 @@ namespace HexapodConsole
     class Program
     {
         public static HexapodInstance _hexapod;
-        public static LogMaster _logMaster;
+        public static Logger _logMaster;
         public static HexapodConsoleConfig _consoleConfig;
 
         static void Main(string[] args)
@@ -38,7 +38,7 @@ namespace HexapodConsole
                     return;
                 }
 
-                _logMaster = new LogMaster();
+                _logMaster = new Logger();
                 _logMaster.OnNewMessageAdded += _logMaster_onNewMessageAdded;
                 
                 // Если указан ком-порт

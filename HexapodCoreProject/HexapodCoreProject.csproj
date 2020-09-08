@@ -45,9 +45,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Elements\Leg.cs" />
     <Compile Include="Elements\Servo.cs" />
-    <Compile Include="Elements\StorageSettings.cs" />
+    <Compile Include="Elements\HexapodSettings.cs" />
     <Compile Include="HexapodInstance.cs" />
     <Compile Include="Interfaces\IPacketMaster.cs" />
     <Compile Include="Interfaces\IPortMaster.cs" />

@@ -1,6 +1,5 @@
 ﻿using RealtimeGeneratorProject;
 using FrundGeneratorProject;
-using GateGeneratorProject;
 using HexapodCoreProject;
 using HexapodGUIProject.ViewModels;
 using HexapodGUIProject.ViewPresenters;
@@ -16,7 +15,6 @@ namespace HexapodGUIProject
         ILogger _logger;
         HexapodInstance hexapodInst;
         FrundGenerator frundGenerator;
-        WTFGateGenerator wtfGenerator;
         RealtimeGenerator realtimeGenerator;
 
         ServousModel _servousModel;
@@ -36,15 +34,12 @@ namespace HexapodGUIProject
             _logger = hexapodInst.GetLogger();
 
             frundGenerator = new FrundGenerator(hexapodInst.GetHexapod(), _logger);
-            wtfGenerator = new WTFGateGenerator(hexapodInst.GetHexapod(), _logger);
             realtimeGenerator = new RealtimeGenerator(hexapodInst.GetHexapod(), _logger);
 
             hexapodInst.AddMoveSource(frundGenerator);
-            hexapodInst.AddMoveSource(wtfGenerator);
             hexapodInst.AddMoveSource(realtimeGenerator);
 
             frundGeneratorView.AddGenerator(frundGenerator);
-            wtfGeneratorView.AddGenerator(wtfGenerator);
             realtimeGeneratorView.AddGenerator(realtimeGenerator);
 
             hexapodInst.GetLogger().OnNewMessageAdded 
@@ -66,8 +61,6 @@ namespace HexapodGUIProject
             selectedServoView.SetPresenter(_selectedServoPresenter);
             
             servousListView.UpdateFromModel();
-
-            structureView.Init(_servousModel, hexapodInst.GetStorage());
         }
 
         private void updateListPortsButton_Click(object sender, EventArgs e)
@@ -143,7 +136,7 @@ namespace HexapodGUIProject
 
         private void rescanGenerators()
         {
-            foreach(var source in hexapodInst.GetSourceManager().getSources())
+            foreach(var source in hexapodInst.SrcManager.getSources())
             {
                 sourcesListBox.Items.Add(source.Name);
             }
@@ -153,12 +146,12 @@ namespace HexapodGUIProject
         {
             if (sourcesListBox.SelectedItem == null) return;
             string sourceName = sourcesListBox.SelectedItem.ToString();
-            hexapodInst.GetSourceManager().SelectSource(sourceName);
+            hexapodInst.SrcManager.SelectSource(sourceName);
         }
 
         private void terminateGeneratorButton_Click(object sender, EventArgs e)
         {
-            hexapodInst.GetSourceManager().TerminateSource();
+            hexapodInst.SrcManager.TerminateSource();
         }
 
         private void MainView_FormClosing(object sender, FormClosingEventArgs e)

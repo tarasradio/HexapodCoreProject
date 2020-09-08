@@ -1,246 +1,186 @@
 {
-  "Servous": {
+  "Servos": {
     "1": {
-      "Name": "Coxa RF",
+      "Name": "Tibia LF",
       "Number": 1,
-      "Channel": 18,
-      "Angle": 92,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": true,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "2": {
-      "Name": "Thigh RF",
+      "Name": "Thigh LF",
       "Number": 2,
-      "Channel": 17,
-      "Angle": 135,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "3": {
-      "Name": "Tibia RF",
+      "Name": "Coxa LF",
       "Number": 3,
-      "Channel": 16,
-      "Angle": 92,
       "Offset": 0,
-      "isInverce": false,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "4": {
-      "Name": "Coxa LF",
+      "Name": "Tibia LM",
       "Number": 4,
-      "Channel": 3,
-      "Angle": 94,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": true,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "5": {
-      "Name": "Thigh LF",
+      "Name": "Thigh LM",
       "Number": 5,
-      "Channel": 2,
-      "Angle": 33,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "6": {
-      "Name": "Tibia LF",
+      "Name": "Coxa LM",
       "Number": 6,
-      "Channel": 1,
-      "Angle": 86,
       "Offset": 0,
-      "isInverce": false,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "7": {
-      "Name": "Coxa RM",
+      "Name": "Tibia LB",
       "Number": 7,
-      "Channel": 15,
-      "Angle": 86,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": true,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "8": {
-      "Name": "Thigh RM",
+      "Name": "Thigh LB",
       "Number": 8,
-      "Channel": 14,
-      "Angle": 89,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "9": {
-      "Name": "Tibia RM",
+      "Name": "Coxa LB",
       "Number": 9,
-      "Channel": 13,
-      "Angle": 75,
       "Offset": 0,
-      "isInverce": false,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "10": {
-      "Name": "Coxa LM",
+      "Name": "Tibia RB",
       "Number": 10,
-      "Channel": 6,
-      "Angle": 72,
-      "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "Offset": -11,
+      "IsInverce": true,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "11": {
-      "Name": "Thigh LM",
+      "Name": "Thigh RB",
       "Number": 11,
-      "Channel": 5,
-      "Angle": 30,
-      "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "Offset": 10,
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "12": {
-      "Name": "Tibia LM",
+      "Name": "Coxa RB",
       "Number": 12,
-      "Channel": 4,
-      "Angle": 91,
       "Offset": 0,
-      "isInverce": false,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "13": {
-      "Name": "Coxa RB",
+      "Name": "Tibia RM",
       "Number": 13,
-      "Channel": 12,
-      "Angle": 42,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": true,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "14": {
-      "Name": "Thigh RB",
+      "Name": "Thigh RM",
       "Number": 14,
-      "Channel": 11,
-      "Angle": 60,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "15": {
-      "Name": "Tibia RB",
+      "Name": "Coxa RM",
       "Number": 15,
-      "Channel": 10,
-      "Angle": 33,
       "Offset": 0,
-      "isInverce": false,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "16": {
-      "Name": "Coxa LB",
+      "Name": "Tibia RF",
       "Number": 16,
-      "Channel": 9,
-      "Angle": 27,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": true,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "17": {
-      "Name": "Thigh LB",
+      "Name": "Thigh RF",
       "Number": 17,
-      "Channel": 8,
-      "Angle": 54,
       "Offset": 0,
-      "isInverce": true,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     },
     "18": {
-      "Name": "Tibia LB",
+      "Name": "Coxa RF",
       "Number": 18,
-      "Channel": 7,
-      "Angle": 45,
       "Offset": 0,
-      "isInverce": false,
-      "minAngle": 40,
-      "maxAngle": 140,
-      "isEnable": true
+      "IsInverce": false,
+      "LowerLimit": 0,
+      "UpperLimit": 180,
+      "IsEnable": true
     }
   },
-  "Legs": {
-    "1": {
-      "Name": "Left Forward",
-      "Number": 1,
-      "tibiaID": 2,
-      "femurID": 1,
-      "coxaID": 3
-    },
-    "2": {
-      "Name": "Right Forward",
-      "Number": 2,
-      "tibiaID": 4,
-      "femurID": 5,
-      "coxaID": 6
-    },
-    "3": {
-      "Name": "Left Middle",
-      "Number": 3,
-      "tibiaID": 8,
-      "femurID": 7,
-      "coxaID": 9
-    },
-    "4": {
-      "Name": "Right Middle",
-      "Number": 4,
-      "tibiaID": 11,
-      "femurID": 10,
-      "coxaID": 12
-    },
-    "5": {
-      "Name": "Left Back",
-      "Number": 5,
-      "tibiaID": 14,
-      "femurID": 13,
-      "coxaID": 15
-    },
-    "6": {
-      "Name": "Right Back",
-      "Number": 6,
-      "tibiaID": 17,
-      "femurID": 16,
-      "coxaID": 18
-    }
+  "JointsToServosMap": {
+    "1": 3,
+    "2": 2,
+    "3": 1,
+    "4": 18,
+    "5": 17,
+    "6": 16,
+    "7": 6,
+    "8": 5,
+    "9": 4,
+    "10": 15,
+    "11": 14,
+    "12": 13,
+    "13": 9,
+    "14": 8,
+    "15": 7,
+    "16": 12,
+    "17": 11,
+    "18": 10
   }
 }

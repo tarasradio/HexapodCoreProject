@@ -10,14 +10,14 @@ namespace HexapodCoreProject.Masters
         public delegate void NewDataReceiveHandler(byte[] data, int lenght);
         public event NewDataReceiveHandler OnNewDataReceived;
 
-        LogMaster _logMaster;
+        Logger _logMaster;
 
         SerialPort port;
         bool isOpenConnect;
         byte[] buffer;
         bool isReceived = false;
 
-        public SerialPortMaster(LogMaster logMaster)
+        public SerialPortMaster(Logger logMaster)
         {
             _logMaster = logMaster;
             port = new SerialPort();

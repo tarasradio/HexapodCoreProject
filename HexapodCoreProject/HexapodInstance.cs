@@ -7,12 +7,12 @@ namespace HexapodCoreProject
 {
     public class HexapodInstance
     {
-        private Storage _storage;
-        private Hexapod _hexapod;
-        private SourceManager _sourceManager;
-        private LogMaster _logger;
-        private PacketMaster _packetMaster;
-        private SerialPortMaster _serialPortmaster;
+        private Storage storage;
+        private Hexapod hexapod;
+        public SourceManager SrcManager { get; set; }
+        private Logger logger;
+        private PacketMaster packetMaster;
+        private SerialPortMaster serialPortMaster;
 
         public HexapodInstance(string fileName)
         {
@@ -21,53 +21,48 @@ namespace HexapodCoreProject
 
         public void CreateInstances(string fileName)
         {
-            _storage = new Storage();
-            _storage.OpenFile(fileName);
+            logger = new Logger();
 
-            _logger = new LogMaster();
-            _serialPortmaster = new SerialPortMaster(_logger);
-            _packetMaster = new PacketMaster(_serialPortmaster);
-            _sourceManager = new SourceManager();
-            _hexapod = new Hexapod(_storage, _packetMaster, _logger);
+            storage = new Storage();
+            storage.OpenFile(fileName);
 
-            _logger.AddMessage("Запись работы системы начата");
+            serialPortMaster = new SerialPortMaster(logger);
+            packetMaster = new PacketMaster(serialPortMaster);
+            SrcManager = new SourceManager();
+            hexapod = new Hexapod(storage, packetMaster, logger);
+
+            logger.AddMessage("Запись работы системы начата");
         }
 
         public void AddMoveSource(IMoveSource moveSource)
         {
-            _sourceManager.AddMovementSource(moveSource);
+            SrcManager.AddMovementSource(moveSource);
         }
 
-        public LogMaster GetLogger()
+        public Logger GetLogger()
         {
-            return _logger;
+            return logger;
         }
 
         public SerialPortMaster GetSerialPortMaster()
         {
-            return _serialPortmaster;
+            return serialPortMaster;
         }
 
         public Storage GetStorage()
         {
-            return _storage;
+            return storage;
         }
 
         public Hexapod GetHexapod()
         {
-            return _hexapod;
-        }
-
-        public SourceManager GetSourceManager()
-        {
-            return _sourceManager;
+            return hexapod;
         }
 		
         public void GoToStart()
         {
-            _hexapod.SetAllCoxaAngle(90);
-            _hexapod.SetAllFemurAngle(90);
-            _hexapod.SetAllTibiaAngle(90);
+            foreach (var servo in storage.Settings.Servos)
+                hexapod.ServoSetAngle(servo.Key, 90);
         }
     }
 }

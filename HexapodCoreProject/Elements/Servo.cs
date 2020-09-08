@@ -1,19 +1,22 @@
-﻿namespace HexapodCoreProject.Elements
+﻿using Newtonsoft.Json;
+using System;
+
+namespace HexapodCoreProject.Elements
 {
-    /// <summary>
-    /// Описывает сервопривод
-    /// </summary>
+    [Serializable]
     public class Servo
     {
-        public string Name = "";
-        public int Number = 0;
-        public int Channel = 0;
-        public int Angle = 0;
-        public int Offset = 0;
-        public bool isInverce = false;
-        public int minAngle = 0;
-        public int maxAngle = 0;
-        public bool isEnable = true;
+        public string Name { get; set; } = "";
+        public int Number { get; set; } = 0;
+
+        [JsonIgnore]
+        public int Angle { get; set; } = 0;
+
+        public int Offset { get; set; } = 0;
+        public bool IsInverce { get; set; } = false;
+        public int LowerLimit { get; set; } = 0;
+        public int UpperLimit { get; set; } = 0;
+        public bool IsEnable { get; set; } = true;
 
         public Servo(int number)
         {

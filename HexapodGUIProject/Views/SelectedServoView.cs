@@ -70,21 +70,21 @@ namespace HexapodGUIProject.Views
             textServoName.Text = item.Name;
             textServoNumber.Text = "Привод " + item.Number.ToString();
 
-            labelMinAngle.Text = item.minAngle.ToString();
-            labelMaxAngle.Text = item.maxAngle.ToString();
+            labelMinAngle.Text = item.LowerLimit.ToString();
+            labelMaxAngle.Text = item.UpperLimit.ToString();
             labelCurrentAngle.Text = item.Angle.ToString();
 
-            trackAngle.Minimum = item.minAngle;
-            trackAngle.Maximum = item.maxAngle;
+            trackAngle.Minimum = item.LowerLimit;
+            trackAngle.Maximum = item.UpperLimit;
 
-            checkBoxInversion.Checked = item.isInverce;
+            checkBoxInversion.Checked = item.IsInverce;
 
             if (_state != States.TRACE)
             {
-                if (item.Angle > item.maxAngle)
-                    trackAngle.Value = item.maxAngle;
-                else if (item.Angle < item.minAngle)
-                    trackAngle.Value = item.minAngle;
+                if (item.Angle > item.UpperLimit)
+                    trackAngle.Value = item.UpperLimit;
+                else if (item.Angle < item.LowerLimit)
+                    trackAngle.Value = item.LowerLimit;
                 else
                     trackAngle.Value = item.Angle;
             }
@@ -98,8 +98,8 @@ namespace HexapodGUIProject.Views
         {
             EditLimitsDialogView dialog = new EditLimitsDialogView();
                 dialog.SetInitValues(
-                    _presenter.GetItem().minAngle,
-                    _presenter.GetItem().maxAngle);
+                    _presenter.GetItem().LowerLimit,
+                    _presenter.GetItem().UpperLimit);
 
             dialog.StartPosition = FormStartPosition.CenterParent;
             if (dialog.ShowDialog() == DialogResult.OK)

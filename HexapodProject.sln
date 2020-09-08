@@ -11,8 +11,6 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexapodInterfacesProject", 
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FrundGeneratorProject", "FrundGeneratorProject\FrundGeneratorProject.csproj", "{E095684E-F805-47D1-8912-D4B31829B06B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WTFGateGeneratorProject", "GateGeneratorProject\WTFGateGeneratorProject.csproj", "{9A9A8DD6-B1DA-462E-B865-2206F053F83D}"
-EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HexapodConsole", "HexapodConsole\HexapodConsole.csproj", "{0F348B36-29AF-4636-9825-C0878F389397}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "RealtimeGeneratorProject", "RealtimeGeneratorProject\RealtimeGeneratorProject.csproj", "{DC0FDD80-09BA-46B5-8E21-B2636A915C4C}"
@@ -39,10 +37,6 @@ Global
 		{E095684E-F805-47D1-8912-D4B31829B06B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E095684E-F805-47D1-8912-D4B31829B06B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E095684E-F805-47D1-8912-D4B31829B06B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{9A9A8DD6-B1DA-462E-B865-2206F053F83D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{9A9A8DD6-B1DA-462E-B865-2206F053F83D}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{9A9A8DD6-B1DA-462E-B865-2206F053F83D}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{9A9A8DD6-B1DA-462E-B865-2206F053F83D}.Release|Any CPU.Build.0 = Release|Any CPU
 		{0F348B36-29AF-4636-9825-C0878F389397}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{0F348B36-29AF-4636-9825-C0878F389397}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0F348B36-29AF-4636-9825-C0878F389397}.Release|Any CPU.ActiveCfg = Release|Any CPU
